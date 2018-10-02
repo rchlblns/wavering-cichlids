@@ -1,12 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="./assets/css/project.css" media="screen,projection" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <title>Traveling Experience</title>
 </head>
+
 <body>
-    <h1>texting one two three!</h1>
+<!-- navigation bar on head -->
+        <nav id="navbar">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">THE US ROAD TRAVEL EXPERIENCE</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="sass.html">Sass</a>
+                    </li>
+                    <li>
+                        <a href="badges.html">Components</a>
+                    </li>
+                    <li>
+                        <a href="collapsible.html">Javascript</a>
+                    </li>
+                    <li>
+                        <a href="mobile.html">Mobile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li>
+                <a href="badges.html">Components</a>
+            </li>
+            <li>
+                <a href="collapsible.html">Javascript</a>
+            </li>
+            <li>
+                <a href="mobile.html">Mobile</a>
+            </li>
+        </ul>
+<!-- end  -->
+
+<!-- paralax container layout of the page -->
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="./assets/images/road-sunset.jpg" />
+        </div>
+    </div>
+    <div class="section white">
+        <div class="container">
+            <h2 class="header col s6">Leave It Up To Us!</h2>       
+        </div>
+        <div class="row container">
+            <p class="dark-text flow-text col s7">Having trouble deciding where to take your road trip? Dont worry! 
+                Just answer some of these questions that catch your
+                interest and we will do the rest!</p>
+
+        </div>
+        <div class="container">
+        <a data-target="slide-out" class="sidenav-trigger btn waves-effect">Start Questions</a>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="./assets/images/purple-bridge.jpg">
+        </div>
+    </div>
+<!-- end of paralax container -->
+
+    <nav> <!-- slide navbar content here  --> </nav>
+    <ul id="slide-out" class="sidenav">
+    <div class="container">
+      <li><div class="user-view">
+        <div class="background">
+          <img src="./assets/images/nasville.jpg">
+        </div>
+      </div>
+      <li><h5 id="question">question blah blah</h5></li>
+      <li><div class="divider"></div></li>
+      <form action="#">
+            <p>
+              <label>
+                <input type="checkbox" />
+                <span id="q-lists">Red</span>
+              </label>
+            </p>
+            <p>  
+        </form>
+        <li><a class="waves-effect btn" href="#!">Finish</a></li>
+    </div>
+    </ul>
+<!-- end slide navbar  -->
+
+
+
+    <!--jquery link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- materialize javascript link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- javacript link -->
+    <script type="text/javascript" src="./assets/javascript/project.js"></script>
 </body>
+
 </html>
