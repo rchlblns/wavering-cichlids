@@ -6,3 +6,5 @@ $(document).ready(function(){
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
+  //drop down
+  $('.dropdown-trigger').dropdown();
