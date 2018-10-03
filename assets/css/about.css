@@ -11,4 +11,10 @@ h2{
 /* spacing between the headers with our names */
 .collapsible-header{
     margin: 3px;
+    color: #000;
+    font-weight: bold;
+    text-shadow: black 1px 2px 6px;
+}
+.collapsible-header:hover{
+    background-color: rgba(207, 207, 207, 0.877);
 }
