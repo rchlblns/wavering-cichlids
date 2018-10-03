@@ -6,3 +6,14 @@ $(document).ready(function(){
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });
+//main javascript code
+$(document).ready(function(){
+
+  //global variable declaration
+  var user = {
+    name: "",
+    questionAnswers: []
+    
+  }
+
+});
