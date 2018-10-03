@@ -1,0 +1,21 @@
+
+#navbar{
+    font-family: 'Graduate', cursive;
+}
+/* title of paragraph */
+.center-align{
+    padding: 5px;
+    font-family: 'Alike Angular', serif;
+}
+/* paragraph background */
+#intro-par{
+    border-radius: 5px;
+
+}
+/* finish button for the modal */
+#finish-button{
+    margin-top: -79px;
+}
+#modal1{
+    font-family: 'Alike Angular', serif;
+}

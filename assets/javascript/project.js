@@ -19,3 +19,13 @@ $(document).ready(function(){
 });
   //drop down
   $('.dropdown-trigger').dropdown();
+//drop down
+  $('.dropdown-trigger').dropdown();
+//modal
+$(document).ready(function(){
+  $('.modal').modal();
+});
+//modal
+$(document).ready(function(){
+  $('select').formSelect();
+});
