@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+        <!-- favicon -->
         <link rel="shortcut icon" type="image/png" href="./assets/images/road-sunset.jpg"/>
         <!-- google fonts -->
         <link href="https://fonts.googleapis.com/css?family=Alike+Angular|Graduate" rel="stylesheet">
@@ -18,8 +19,8 @@
 
 <body>
     <!-- navigation bar on head -->
-    <nav id="navbar" class="blue darken-4 z-depth-5 hoverable">
-        <div class="nav-wrapper blue darken-4">
+    <nav id="navbar" class="grey lighten-1 z-depth-5 hoverable">
+        <div class="nav-wrapper blue-grey darken-1">
             <a href="#!" class="brand-logo hoverable">THE US ROAD TRAVEL EXPERIENCE</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
@@ -41,95 +42,94 @@
     <!-- paralax container layout of the page -->
 
     <div class="parallax-container ">
-        <div class="parallax"><img src="./assets/images/stars.jpg" /></div>
+        <div class="parallax"><img src="./assets/images/road.jpg" /></div>
     </div>
-    <div class="section white z-depth-5">
+    <div class="section blue-grey darken-3 z-depth-5">
         <!-- header -->
         <div class="row container">
-            <h2 class="header center-align">LEAVE IT UP TO US!</h2>
+            <h2 class="grey-text text-lighten-3 header center-align">LEAVE IT UP TO US!</h2>
         </div>
         <!-- paragraph -->
-        <div id="intro-par"class="row container z-depth-5 black-text blue-grey lighten-4">
-            <p class="dark-text flow-text center-align">Having trouble deciding where to take your road trip? Dont worry! Just answer some of these questions that catch
-                your interest and we will do the rest!
-            </p>
+        <p class="dark-text flow-text center-align">Having trouble deciding where to take your road trip? Dont
+            worry! Just answer some of these questions that catch
+            your interest and we will do the rest!
+        </p>
+        <!-- modal trigger -->
+        <div class="container center-align">
+            <a href="#modal1" class="modal-trigger deep-orange accent-1 btn pulse btn-large waves-effect z-depth-5">Let's Go</a>
         </div>
-            <!-- modal trigger -->
-        <div class="container">
-            <a href="#modal1" class="modal-trigger blue darken-4 pulse btn waves-effect z-depth-5">Start</a>
-        </div>    
     </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="./assets/images/map.jpg"></div>
-    </div>
+        <div class="parallax-container">
+            <div class="parallax"><img src="./assets/images/map.jpg"></div>
+        </div>
+
     <!-- end paralax -->
 
         <!-- Modal Structure -->
         <div class="container">
-            <div id="modal1" class="modal modal-footer">
-                <div class="modal-content">
-                    <!-- address -->
-                    <h4>Enter Your Address</h4>
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="question-address" placeholder="2345 Austin Bloom St Houston, Tx" class="materialize-textarea"></textarea>
-                                    <label class="black-text" for="textarea1">Location</label>
+                <div id="modal1" class="modal modal-footer">
+                    <div class="modal-content">
+                        <!-- address -->
+                        <h4>Enter Your Address</h4>
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="question-address" placeholder="2345 Austin Bloom St Houston, Tx" class="materialize-textarea"></textarea>
+                                        <label class="black-text" for="textarea1">Location</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- question headings -->
-                    <div class="row">
-                        <label class="black-text col s6" ><h5>Question blah</h5></label>
-                        <label class="black-text col s6"><h5>Question blah</h5></label>
-                    </div>
-                        <!-- question one -->
-                            <div class="row">
-                                <div class="input-field col 6 m6">
-                                    <select id="question-option1" class="icons">
+                            </form>
+                        </div>
+                        <!-- question headings -->
+                        <div class="row">
+                            <label class="black-text col s6" ><h5>Question blah</h5></label>
+                            <label class="black-text col s6"><h5>Question blah</h5></label>
+                        </div>
+                            <!-- question one -->
+                                <div class="row">
+                                    <div class="input-field col 6 m6">
+                                        <select id="question-option1" class="icons">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="" data-icon="images/sample-1.jpg">example 1</option>
+                                            <option value="" data-icon="images/office.jpg">example 2</option>
+                                            <option value="" data-icon="images/yuna.jpg">example 3</option>
+                                        </select>
+                                    </div>
+                            <!-- question two -->
+                                    <div class="input-field col 6 m6">
+                                    <select id="question-option2" class="icons">
                                         <option value="" disabled selected>Choose your option</option>
-                                        <option value="" data-icon="images/sample-1.jpg">example 1</option>
-                                        <option value="" data-icon="images/office.jpg">example 2</option>
-                                        <option value="" data-icon="images/yuna.jpg">example 3</option>
+                                        <option value="" data-icon="images/sample-1.jpg" class="left">example 1</option>
+                                        <option value="" data-icon="images/office.jpg" class="left">example 2</option>
+                                        <option value="" data-icon="images/yuna.jpg" class="left">example 3</option>
                                     </select>
                                 </div>
-                        <!-- question two -->
-                                <div class="input-field col 6 m6">
-                                <select id="question-option2" class="icons">
-                                    <option value="" disabled selected>Choose your option</option>
-                                    <option value="" data-icon="images/sample-1.jpg" class="left">example 1</option>
-                                    <option value="" data-icon="images/office.jpg" class="left">example 2</option>
-                                    <option value="" data-icon="images/yuna.jpg" class="left">example 3</option>
-                                </select>
-                            </div>
-                    <!-- miles  -->
-                    <div class="row">
-                        <form action="#" class="col s12">
-                            <p class="range-field black-text">Preference On Miles
-                                <input class="blue darken-4" type="range" id="question-range" min="50" max="1500" />
-                            </p>
-                        </form>
+                        <!-- miles  -->
+                        <div class="row">
+                            <form action="#" class="col s12">
+                                <p class="range-field black-text">Preference On Miles
+                                    <input class="blue darken-4" type="range" id="question-range" min="50" max="1500" />
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- submit button -->
+                    <div class="modal-footer">
+                        <a href="#" id="finish-button" class="z-depth-5 modal-close waves-effect waves deep-orange accent-1  btn">Finish!</a>
                     </div>
                 </div>
-                <!-- submit button -->
-                <div class="modal-footer">
-                    <a href="#" id="finish-button" class="z-depth-5 modal-close waves-effect waves-blue blue darken-4 btn">Finish!</a>
-                </div>
             </div>
-        </div>
-        <!-- end of modal -->
+            <!-- end of modal -->
 
 
 
-
-            <!--jquery link  -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <!-- materialize javascript link -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            <!-- javacript link -->
-            <script type="text/javascript" src="./assets/javascript/project.js"></script>
+        <!--jquery link  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- materialize javascript link -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- javacript link -->
+        <script type="text/javascript" src="./assets/javascript/project.js"></script>
 </body>
 
 </html>
