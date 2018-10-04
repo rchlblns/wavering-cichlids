@@ -8,7 +8,14 @@ $(document).ready(function(){
 });
 //drop down
 $('.dropdown-trigger').dropdown();
-
+//modal
+$(document).ready(function(){
+  $('.modal').modal();
+});
+//modal
+$(document).ready(function(){
+  $('select').formSelect();
+});
 var addressInput;
 var addLat;
 var addLng;
@@ -60,6 +67,7 @@ function initMap() {
     gestureHandling: "cooperative",
     noClear: true
   });
+<<<<<<< HEAD
 
   const request = {
     location: googleLatLng,
