@@ -69,3 +69,74 @@ function initMap() {
     noClear: true
   });
 
+  const request = {
+    location: googleLatLng,
+    radius: radiusMeters,
+    keyword: "skiing"
+  }
+  console.log(request);
+
+  placesInfo = new google.maps.places.PlacesService(map);
+  placesInfo.nearbySearch(request, callback);
+}
+
+function callback(result, status) {
+  console.log("Inside callback function.");
+  const googleStatus = google.maps.places.PlacesServiceStatus;
+  if (status === googleStatus.OK) {
+    console.log("The response contains a valid result.");
+    for(i = 0; i < 10; i++) {
+      console.log(result[i]);
+    }
+  }
+  else if (status === googleStatus.ERROR) {
+    console.log("There was a problem contacting the Google servers.");
+  }
+  else if (status === googleStatus.INVALID_REQUEST) {
+    console.log("This request was invalid.");
+  }
+  else if (status === googleStatus.OVER_QUERY_LIMIT) {
+    console.log("The webpage has gone over its request quota.");
+  }
+  else if (status === googleStatus.NOT_FOUND) {
+    console.log("The referenced location was not found in the Places database.");
+  }
+  else if (status === googleStatus.REQUEST_DENIED) {
+    console.log("The webpage is not allowed to use the PlacesService.");
+  }
+  else if (status === googleStatus.UNKNOWN_ERROR) {
+    console.log("The PlacesService request could not be processed due to a server error. The request may succeed if you try again.");
+  }
+  else if (status === googleStatus.ZERO_RESULTS) {
+    console.log("No result was found for this request.");
+  }
+}
+
+function keywordPicker() {
+  console.log("Inside keywordPicker function.");
+  // grab values from questions 3 and 4
+  const q3 = $("#question3").val();
+  const q4 = $("#question4").val();
+  let keyword;
+  if(q3 === "warm") {
+    if(q4 === "outdoors"){
+      console.log("Need warm, outdoors activity for a Google keyword.");
+      keyword = "beach";
+    }
+    else if(q4 === "indoors"){
+      console.log("Need warm, indoors activity for a Google keyword.");
+      keyword = "shopping";
+    }
+  }
+  else if(q3 === "cool"){
+    if(q4 === "outdoors"){
+      console.log("Need cold, outdoors activity for a Google keyword.");
+      keyword = "skiing";
+    }
+    else if(q4 === "indoors"){
+      console.log("Need cold, indoors activity for a Google keyword.");
+      keyword = "museum";
+    }
+  }
+  console.log("Keyword is " + keyword);
+}
