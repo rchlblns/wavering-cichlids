@@ -49,14 +49,14 @@
         </div>
         <!-- paragraph -->
         <!-- <div id="intro-par" class="row container z-depth-5 black-text grey lighten-1"> -->
-            <p class="dark-text flow-text center-align">Having trouble deciding where to take your road trip? Dont
-                worry! Just answer some of these questions that catch
-                your interest and we will do the rest!
-            </p>
-            <!-- modal trigger -->
-            <div class="container center-align">
-                <a href="#modal1" class="modal-trigger deep-orange accent-1 btn-floating pulse btn-large waves-effect z-depth-5">Start</a>
-            </div>
+        <p class="dark-text flow-text center-align">Having trouble deciding where to take your road trip? Dont
+            worry! Just answer some of these questions that catch
+            your interest and we will do the rest!
+        </p>
+        <!-- modal trigger -->
+        <div class="container center-align">
+            <a href="#modal1" class="modal-trigger deep-orange accent-1 btn pulse btn-large waves-effect z-depth-5">Let's Go</a>
+        </div>
         <!-- </div> -->
         <!-- modal trigger -->
         <!-- <div class="container">
@@ -71,31 +71,34 @@
     <!-- Modal Structure -->
     <div class="container">
         <div id="modal1" class="modal modal-footer">
-            <div class="modal-content">
+            <div class="modal-content center-align">
                 <!-- address -->
-                <h4>Enter Your Address</h4>
+                <h5>Starting location:</h5>
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="question-address" placeholder="2345 Austin Bloom St Houston, Tx" class="materialize-textarea"></textarea>
-                                <label class="black-text" for="textarea1">Location</label>
+                                <textarea id="question-address" placeholder="2345 Austin Bloom St Houston, Tx" class="materialize-textarea center-align"></textarea>
+                                <!-- <label class="black-text" for="textarea1">Enter your location:</label> -->
                             </div>
                         </div>
                     </form>
                 </div>
                 <!-- question headings -->
-                <div class="row">
+                <!-- <div class="row">
                     <label class="black-text col s6">
                         <h5>Question blah</h5>
                     </label>
                     <label class="black-text col s6">
                         <h5>Question blah</h5>
                     </label>
-                </div>
+                </div> -->
                 <!-- question one -->
                 <div class="row">
-                    <div class="input-field col 6 m6">
+                    <label class="black-text col s12">
+                        <h5>Question blah</h5>
+                    </label>
+                    <div class="input-field col s12 center-align">
                         <select id="question-option1" class="icons">
                             <option value="" disabled selected>Choose your option</option>
                             <option value="" data-icon="images/sample-1.jpg">example 1</option>
@@ -103,8 +106,13 @@
                             <option value="" data-icon="images/yuna.jpg">example 3</option>
                         </select>
                     </div>
-                    <!-- question two -->
-                    <div class="input-field col 6 m6">
+                </div>
+                <!-- question two -->
+                <div class="row">
+                    <label class="black-text col s12">
+                        <h5>Question blah</h5>
+                    </label>
+                    <div class="input-field col s12">
                         <select id="question-option2" class="icons">
                             <option value="" disabled selected>Choose your option</option>
                             <option value="" data-icon="images/sample-1.jpg" class="left">example 1</option>
@@ -112,18 +120,18 @@
                             <option value="" data-icon="images/yuna.jpg" class="left">example 3</option>
                         </select>
                     </div>
-                    <!-- miles  -->
-                    <div class="row">
-                        <form action="#" class="col s12">
-                            <p class="range-field black-text">Preference On Miles
-                                <input type="range" id="question-range" min="50" max="1500" />
-                            </p>
-                        </form>
-                    </div>
+                </div>
+                <!-- miles  -->
+                <div class="row">
+                    <form action="#" class="col s12">
+                        <h5 class="range-field black-text">How far do you want to travel?
+                            <input type="range" id="question-range" min="50" max="1500"/>
+                        </h5>
+                    </form>
                 </div>
                 <!-- submit button -->
                 <div class="modal-footer">
-                    <a href="#" id="finish-button" class="z-depth-5 modal-close waves-effect waves-blue deep-orange accent-1 btn">Go!</a>
+                    <a href="#" id="finish-button" class="z-depth-5 modal-close waves-effect waves-blue deep-orange accent-1 btn">Find places</a>
                 </div>
             </div>
         </div>
