@@ -7,7 +7,7 @@ $(document).ready(function(){
   $('.sidenav').sidenav();
 });
 //drop down
-$('.dropdown-trigger').dropdown();
+  $('.dropdown-trigger').dropdown();
 //modal
 $(document).ready(function(){
   $('.modal').modal();
@@ -67,8 +67,6 @@ function initMap() {
     gestureHandling: "cooperative",
     noClear: true
   });
-<<<<<<< HEAD
-
   const request = {
     location: googleLatLng,
     radius: radiusMeters,
