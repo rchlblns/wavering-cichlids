@@ -1,5 +1,5 @@
 body{
-    background-image: url("../images/nasville.jpg");
+    background-image: url("../images/about.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -7,6 +7,7 @@ body{
 #navbar{
     font-family: 'Graduate', cursive;
 }
+
 /* head */
 h2{
     color:#e3f2fd;
@@ -22,4 +23,9 @@ h2{
 }
 .collapsible-header:hover{
     background-color: rgba(207, 207, 207, 0.877);
+}
+.collapsible-body{
+    background-color: rgba(0, 0, 0, 0.699);
+    font-family: 'Alike Angular', serif;
+    font-weight: bold;
 }
