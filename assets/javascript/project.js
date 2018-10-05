@@ -28,7 +28,7 @@ $(document).ready(function () {
   
   // "finish" button click submit form and store variables to local storage
   $("#finish-button").on("click", function (event) {
-    //event.preventDefault();
+    event.preventDefault();
     addressInput = $("#question-address").val().replace(/ /g, "+");
     var question1ID = $("#question-option1").attr("data-target");
     var question2ID = $("#question-option2").attr("data-target");
@@ -51,7 +51,6 @@ $(document).ready(function () {
     // console.log output: 3831+Kristin+Lee+Ln,+Houston,+TX+77014 (spaces not allowed in URL)
     var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addressInput + "&country=US&key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q";
     console.log(googleURL);
-    
     $.ajax({
       url: googleURL,
       method: "GET"
@@ -60,6 +59,7 @@ $(document).ready(function () {
       addLng = response.results[0].geometry.location.lng;
       addressLatLng = { lat: addLat, lng: addLng };
       console.log(addressLatLng);
+      //initMap();
       //query for list of hotels
       var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
       $.ajax({
@@ -69,6 +69,9 @@ $(document).ready(function () {
         hotels = response.results;
         console.log("HOTELS:::");
         console.log(hotels);
+        localStorage.setItem("hotels", JSON.stringify(hotels));
+        console.log(window.location);
+        window.location.replace("results.html");
       });
     });
     
@@ -79,7 +82,7 @@ $(document).ready(function () {
     // latitude and longitude converted to a google map coordinate
     googleLatLng = new google.maps.LatLng(addressLatLng);
     console.log(googleLatLng);
-    map = new google.maps.Map($("#mapDisplay"), {
+    map = new google.maps.Map($("#map"), {
       center: googleLatLng,
       zoom: 12,
       fullscreenControl: false,
