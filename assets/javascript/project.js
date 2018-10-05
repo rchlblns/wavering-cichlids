@@ -59,6 +59,8 @@ $(document).ready(function () {
       addLng = response.results[0].geometry.location.lng;
       addressLatLng = { lat: addLat, lng: addLng };
       console.log(addressLatLng);
+      var locdata = [addLat, addLng];
+      localStorage.setItem("locdata", JSON.stringify(locdata));
       //initMap();
       //query for list of hotels
       var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
@@ -71,7 +73,7 @@ $(document).ready(function () {
         console.log(hotels);
         localStorage.setItem("hotels", JSON.stringify(hotels));
         console.log(window.location);
-        window.location.replace("results.html");
+        window.location.href= "results.html";
       });
     });
     
