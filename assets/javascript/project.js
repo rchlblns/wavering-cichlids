@@ -28,7 +28,7 @@ $(document).ready(function () {
   
   // "finish" button click submit form and store variables to local storage
   $("#finish-button").on("click", function (event) {
-    event.preventDefault();
+    //event.preventDefault();
     addressInput = $("#question-address").val().replace(/ /g, "+");
     var question1ID = $("#question-option1").attr("data-target");
     var question2ID = $("#question-option2").attr("data-target");
