@@ -53,6 +53,9 @@ $.ajax({
   addLng = response.results[0].geometry.location.lng;
   addressLatLng = {lat: addLat, lng: addLng};
   console.log(addressLatLng);
+}).then(function() {
+  console.log(addressLatLng);
+  initMap();
 });
 
 // start of google maps api
@@ -70,7 +73,7 @@ function initMap() {
   const request = {
     location: googleLatLng,
     radius: radiusMeters,
-    keyword: "skiing"
+    keyword: ["snowboarding", "skiing", "park"]
   }
   console.log(request);
 
@@ -83,7 +86,7 @@ function callback(result, status) {
   const googleStatus = google.maps.places.PlacesServiceStatus;
   if (status === googleStatus.OK) {
     console.log("The response contains a valid result.");
-    for(i = 0; i < 10; i++) {
+    for(i = 0; i < 3; i++) {
       console.log(result[i]);
     }
   }
