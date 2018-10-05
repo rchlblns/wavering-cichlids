@@ -76,7 +76,6 @@ $(document).ready(function () {
         window.location.href= "results.html";
       });
     });
-    
   });
   
   // start of google maps api
