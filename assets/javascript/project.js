@@ -137,7 +137,7 @@ $(".card-panel").on("click", function() {
   const directionsRequest = new google.maps.DirectionsService();
   directionsResults = new google.maps.DirectionsRenderer();
   directionsResults.setMap(map);
-  console.log($(this);
+  console.log($(this));
   const destination = $(this).attr("value");
   getDirections(destination);
   
