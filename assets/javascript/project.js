@@ -1,50 +1,79 @@
 //function for paralax
-$(document).ready(function(){
+$(document).ready(function () {
   $('.parallax').parallax();
 });
 //function for slide navbar
-$(document).ready(function(){
+$(document).ready(function () {
   $('.sidenav').sidenav();
 });
 //drop down
-  $('.dropdown-trigger').dropdown();
+$('.dropdown-trigger').dropdown();
+$(document).ready(function () {
+  $('.sidenav').sidenav();
+});
+//drop down
+$('.dropdown-trigger').dropdown();
 //modal
-$(document).ready(function(){
+$(document).ready(function () {
   $('.modal').modal();
 });
 //modal
-$(document).ready(function(){
+$(document).ready(function () {
   $('select').formSelect();
 });
-var addressInput;
-var addLat;
-var addLng;
-var addressLatLng;
-var radiusMeters;
-var map;
-var googleLatLng;
-var placesInfo;
-// "finish" button click submit form and store variables to local storage
-$("#submitBtn").on("click", function() {
-  // grab text from 1) starting address and save to a variable
-  // addressInput = $("#userAddress").val().trim().replace(/ /g, "+");
-  // console.log(addressInput);
-  // grab value from range slider 2) radius and save to a variable
-  // var radiusMiles = $("#driveRadius").val();
-  const radiusMiles = 250;
-  // convert the user's input desired radius in miles to drive to distance in meters for use with the Google places api
-  radiusMeters = radiusMiles * 1609.344;
-  console.log(radiusMeters);
-  // run function that select a keyword for Google Nearby Search
-  // keywordPicker():
-});
-radiusMeters = 502336;
 
-addressInput = ("3831 Kristin Lee Ln, Houston, TX 77014").replace(/ /g, "+");
-// console.log output: 3831+Kristin+Lee+Ln,+Houston,+TX+77014 (spaces not allowed in URL)
+//main javascript code
+$(document).ready(function () {
+
+  //global variable declaration
+  var addressInput;
+  var addLat;
+  var addLng;
+  var addressLatLng;
+  var googleLatLng;
+  var radiusMeters;
+  var destChoice;
+  var map;
+  var userDestination;
+  var directionsResults;
+
+  var user = {
+    name: "",
+    questionAnswers: []
+
+  }
+  
+  // "finish" button click submit form and store variables to local storage
+  $("#finish-button").on("click", function (event) {
+    event.preventDefault();
+    addressInput = $("#question-address").val().replace(/ /g, "+");
+    var question1ID = $("#question-option1").attr("data-target");
+    var question2ID = $("#question-option2").attr("data-target");
+    user.questionAnswers.push($("#" + question1ID).attr("value"));
+    console.log($("#" + question1ID).attr("value"));
+    user.questionAnswers.push($("#" + question2ID).attr("value"));
+    // grab text from 1) starting address and save to a variable
+    // addressInput = $("#userAddress").val().trim().replace(/ /g, "+");
+    // console.log(addressInput);
+    // grab value from range slider 2) radius and save to a variable
+    // var radiusMiles = $("#driveRadius").val();
+    const radiusMiles = $("#question-range").val();
+    // convert the user's input desired radius in miles to drive to distance in meters for use with the Google places api
+    radiusMeters = radiusMiles * 1609.344;
+    console.log(radiusMeters);
+    // run function that select a keyword for Google Nearby Search
+    // keywordPicker():
+    console.log($("#question-range").val());
+    console.log(user.questionAnswers);
+    // console.log output: 3831+Kristin+Lee+Ln,+Houston,+TX+77014 (spaces not allowed in URL)
+  });
+
+addressInput = "3831+Kristin+Lee+Ln+Houston,+TX+77014";
+radiusMeters = 250 * 1609.344;
+
 var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addressInput + "&country=US&key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q";
 console.log(googleURL);
-
+    
 $.ajax({
   url: googleURL,
   method: "GET"
@@ -77,17 +106,30 @@ function initMap() {
   }
   console.log(request);
 
-  placesInfo = new google.maps.places.PlacesService(map);
+  const placesInfo = new google.maps.places.PlacesService(map);
   placesInfo.nearbySearch(request, callback);
 }
 
+$(".card-panel").on("click", function() {
+  const directionsRequest = new google.maps.DirectionsService();
+  directionsResults = new google.maps.DirectionsRenderer();
+  directionsResults.setMap(map);
+  console.log($(this);
+  const destination = $(this).attr("value");
+  getDirections(destination);
+});
+  
 function callback(result, status) {
   console.log("Inside callback function.");
   const googleStatus = google.maps.places.PlacesServiceStatus;
   if (status === googleStatus.OK) {
     console.log("The response contains a valid result.");
-    for(i = 0; i < 3; i++) {
+    for (i = 0; i < 3; i++) {
       console.log(result[i]);
+      $(".card-panel")
+                .attr("id", "result" + i)
+                .attr("result", result[i].id)
+                .html("Result" + i);
     }
   }
   else if (status === googleStatus.ERROR) {
@@ -119,25 +161,37 @@ function keywordPicker() {
   const q3 = $("#question3").val();
   const q4 = $("#question4").val();
   let keyword;
-  if(q3 === "warm") {
-    if(q4 === "outdoors"){
+  if (q3 === "warm") {
+    if (q4 === "outdoors") {
       console.log("Need warm, outdoors activity for a Google keyword.");
       keyword = "beach";
     }
-    else if(q4 === "indoors"){
+    else if (q4 === "indoors") {
       console.log("Need warm, indoors activity for a Google keyword.");
       keyword = "shopping";
     }
   }
-  else if(q3 === "cool"){
-    if(q4 === "outdoors"){
+  else if (q3 === "cool") {
+    if (q4 === "outdoors") {
       console.log("Need cold, outdoors activity for a Google keyword.");
       keyword = "skiing";
     }
-    else if(q4 === "indoors"){
+    else if (q4 === "indoors") {
       console.log("Need cold, indoors activity for a Google keyword.");
       keyword = "museum";
     }
   }
   console.log("Keyword is " + keyword);
+}
+});
+
+function getDirections(destination) {
+  console.log("Inside getDirections function.");
+  const request = {
+    origin: googleLatLng,
+    destination: destination,
+    waypoints[]: DirectionsWaypoint,
+    optimizeWaypoints: false,
+    provideRouteAlternatives: false,
+  }
 }
