@@ -1,0 +1,16 @@
+/* background color */
+body{
+    background-color: #f7c59f;
+    background-image: linear-gradient(14deg, #f7c59f 0%, #ffffff 100%);
+
+}
+/* body and html height and specs */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+/* navbar control  */
+ #navbar {
+    font-family: 'Graduate', cursive;
+ }
