@@ -6,6 +6,22 @@ $(document).ready(function () {
 $(document).ready(function () {
   $('.sidenav').sidenav();
 });
+//drop down
+$('.dropdown-trigger').dropdown();
+$(document).ready(function () {
+  $('.sidenav').sidenav();
+});
+//drop down
+$('.dropdown-trigger').dropdown();
+//modal
+$(document).ready(function () {
+  $('.modal').modal();
+});
+//modal
+$(document).ready(function () {
+  $('select').formSelect();
+});
+
 //main javascript code
 $(document).ready(function () {
 
@@ -18,7 +34,10 @@ $(document).ready(function () {
   var map;
   var googleLatLng;
   var placesInfo;
+  var destChoice;
   var hotels = [];
+  var userDestination;
+  var directionsResults;
 
   var user = {
     name: "",
@@ -49,19 +68,23 @@ $(document).ready(function () {
     console.log($("#question-range").val());
     console.log(user.questionAnswers);
     // console.log output: 3831+Kristin+Lee+Ln,+Houston,+TX+77014 (spaces not allowed in URL)
+
+    /* !!!! start Google API !!! */
     var googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addressInput + "&country=US&key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q";
     console.log(googleURL);
     $.ajax({
       url: googleURL,
       method: "GET"
-    }).then(function (response) {
+    }).then(function(response) {
       addLat = response.results[0].geometry.location.lat;
       addLng = response.results[0].geometry.location.lng;
-      addressLatLng = { lat: addLat, lng: addLng };
+      addressLatLng = {lat: addLat, lng: addLng};
       console.log(addressLatLng);
       var locdata = [addLat, addLng];
       localStorage.setItem("locdata", JSON.stringify(locdata));
       //initMap();
+
+      /* !!!!!start travel API!!!! */
       //query for list of hotels
       var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
       $.ajax({
@@ -75,6 +98,10 @@ $(document).ready(function () {
         console.log(window.location);
         window.location.href= "results.html";
       });
+    /* !!!! Contintue Google Maps API !!!! */
+    }).then(function() {
+      console.log(addressLatLng);
+      initMap();
     });
   });
   
@@ -100,80 +127,93 @@ $(document).ready(function () {
     placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.nearbySearch(request, callback);
   }
+  console.log(request);
+
+  const placesInfo = new google.maps.places.PlacesService(map);
+  placesInfo.nearbySearch(request, callback);
+});
+
+$(".card-panel").on("click", function() {
+  const directionsRequest = new google.maps.DirectionsService();
+  directionsResults = new google.maps.DirectionsRenderer();
+  directionsResults.setMap(map);
+  console.log($(this);
+  const destination = $(this).attr("value");
+  getDirections(destination);
   
-  function callback(result, status) {
-    console.log("Inside callback function.");
-    const googleStatus = google.maps.places.PlacesServiceStatus;
-    if (status === googleStatus.OK) {
-      console.log("The response contains a valid result.");
-      for (i = 0; i < 10; i++) {
-        console.log(result[i]);
-      }
-    }
-    else if (status === googleStatus.ERROR) {
-      console.log("There was a problem contacting the Google servers.");
-    }
-    else if (status === googleStatus.INVALID_REQUEST) {
-      console.log("This request was invalid.");
-    }
-    else if (status === googleStatus.OVER_QUERY_LIMIT) {
-      console.log("The webpage has gone over its request quota.");
-    }
-    else if (status === googleStatus.NOT_FOUND) {
-      console.log("The referenced location was not found in the Places database.");
-    }
-    else if (status === googleStatus.REQUEST_DENIED) {
-      console.log("The webpage is not allowed to use the PlacesService.");
-    }
-    else if (status === googleStatus.UNKNOWN_ERROR) {
-      console.log("The PlacesService request could not be processed due to a server error. The request may succeed if you try again.");
-    }
-    else if (status === googleStatus.ZERO_RESULTS) {
-      console.log("No result was found for this request.");
+function callback(result, status) {
+  console.log("Inside callback function.");
+  const googleStatus = google.maps.places.PlacesServiceStatus;
+  if (status === googleStatus.OK) {
+    console.log("The response contains a valid result.");
+    for (i = 0; i < 3; i++) {
+      console.log(result[i]);
+      $(".card-panel")
+                .attr("id", "result" + i)
+                .attr("result", result[i].id)
+                .html("Result" + i);
     }
   }
-  
-  function keywordPicker() {
-    console.log("Inside keywordPicker function.");
-    // grab values from questions 3 and 4
-    const q3 = $("#question3").val();
-    const q4 = $("#question4").val();
-    let keyword;
-    if (q3 === "warm") {
-      if (q4 === "outdoors") {
-        console.log("Need warm, outdoors activity for a Google keyword.");
-        keyword = "beach";
-      }
-      else if (q4 === "indoors") {
-        console.log("Need warm, indoors activity for a Google keyword.");
-        keyword = "shopping";
-      }
-    }
-    else if (q3 === "cool") {
-      if (q4 === "outdoors") {
-        console.log("Need cold, outdoors activity for a Google keyword.");
-        keyword = "skiing";
-      }
-      else if (q4 === "indoors") {
-        console.log("Need cold, indoors activity for a Google keyword.");
-        keyword = "museum";
-      }
-    }
-    console.log("Keyword is " + keyword);
+  else if (status === googleStatus.ERROR) {
+    console.log("There was a problem contacting the Google servers.");
   }
+  else if (status === googleStatus.INVALID_REQUEST) {
+    console.log("This request was invalid.");
+  }
+  else if (status === googleStatus.OVER_QUERY_LIMIT) {
+    console.log("The webpage has gone over its request quota.");
+  }
+  else if (status === googleStatus.NOT_FOUND) {
+    console.log("The referenced location was not found in the Places database.");
+  }
+  else if (status === googleStatus.REQUEST_DENIED) {
+    console.log("The webpage is not allowed to use the PlacesService.");
+  }
+  else if (status === googleStatus.UNKNOWN_ERROR) {
+    console.log("The PlacesService request could not be processed due to a server error. The request may succeed if you try again.");
+  }
+  else if (status === googleStatus.ZERO_RESULTS) {
+    console.log("No result was found for this request.");
+  }
+}
+
+function keywordPicker() {
+  console.log("Inside keywordPicker function.");
+  // grab values from questions 3 and 4
+  const q3 = $("#question3").val();
+  const q4 = $("#question4").val();
+  let keyword;
+  if (q3 === "warm") {
+    if (q4 === "outdoors") {
+      console.log("Need warm, outdoors activity for a Google keyword.");
+      keyword = "beach";
+    }
+    else if (q4 === "indoors") {
+      console.log("Need warm, indoors activity for a Google keyword.");
+      keyword = "shopping";
+    }
+  }
+  else if (q3 === "cool") {
+    if (q4 === "outdoors") {
+      console.log("Need cold, outdoors activity for a Google keyword.");
+      keyword = "skiing";
+    }
+    else if (q4 === "indoors") {
+      console.log("Need cold, indoors activity for a Google keyword.");
+      keyword = "museum";
+    }
+  }
+  console.log("Keyword is " + keyword);
+}
 });
-//drop down
-$('.dropdown-trigger').dropdown();
-$(document).ready(function () {
-  $('.sidenav').sidenav();
-});
-//drop down
-$('.dropdown-trigger').dropdown();
-//modal
-$(document).ready(function () {
-  $('.modal').modal();
-});
-//modal
-$(document).ready(function () {
-  $('select').formSelect();
-});
+
+function getDirections(destination) {
+  console.log("Inside getDirections function.");
+  const request = {
+    origin: googleLatLng,
+    destination: destination,
+    waypoints: DirectionsWaypoint,
+    optimizeWaypoints: false,
+    provideRouteAlternatives: false,
+  }
+}
