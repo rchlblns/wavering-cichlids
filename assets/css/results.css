@@ -47,3 +47,7 @@ img{
 .card-title {
   font-family: 'Poppins', sans-serif;
 }
+
+#table-head{
+  color:black;
+}
