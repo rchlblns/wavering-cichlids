@@ -3,12 +3,13 @@ var map;
 var googleLatLng;
 var hotels = [];
 
-// Variables set for testing DO NOT REMOVE
-// addressInput = "3831+Kristin+Lee+Ln,+Houston,+TX+77014";
-// radiusMeters = 500 * 1609.344;
-// entertainment = "museum";
+// set variables from session storage
+var addressInput = sessionStorage.getItem("addressInput");
+var radiusMeters = sessionStorage.getItem("radiusMeters");
+var entertainment = sessionStorage.getItem("entertainment");
 
 $(document).ready(function() {
+    console.log(radiusMeters);
     console.log("Results.html has loaded.");
     /* !!!! start Google API !!! */
     var googleURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${addressInput}&country=US&key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q`;
@@ -56,6 +57,7 @@ function initMap() {
         noClear: true
     });
     $("#map").css("background-color", "red");
+    console.log(radiusMeters);
     const request = {
         location: googleLatLng,
         radius: radiusMeters,

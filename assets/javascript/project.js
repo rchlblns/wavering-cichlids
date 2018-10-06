@@ -29,11 +29,11 @@ var addLng;
 var radiusMeters;
 var entertainment;
 
-/*var user = {
-  name: "",
-  questionAnswers: []
+// var user = {
+//   name: "",
+//   questionAnswers: []
 
-}*/
+// }
 
 //main javascript code
 $(document).ready(function () {
@@ -52,6 +52,12 @@ $(document).ready(function () {
     // convert the user's input desired radius in miles to drive to distance in meters for use with the APIs
     radiusMeters = radiusMiles * 1609.344;
     console.log("Miles converted to meters is " + radiusMeters);
+
+    sessionStorage.setItem("addressInput", addressInput);
+    sessionStorage.setItem("entertainment", entertainment);
+    sessionStorage.setItem("radiusMeters", radiusMeters);
+
+    window.location.href = "results.html";
   });
 }); 
 
