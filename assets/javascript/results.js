@@ -27,7 +27,7 @@ $(document).ready(function() {
 
         /* !!!!!start travel API!!!! */
         //query for list of hotels
-        /*var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
+        var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
         $.ajax({
             url: travelURL,
             method: "GET"
@@ -35,10 +35,9 @@ $(document).ready(function() {
             hotels = response.results;
             console.log("HOTELS:::");
             console.log(hotels);
-            localStorage.setItem("hotels", JSON.stringify(hotels));
             console.log(window.location);
-            window.location.href= "results.html";
-        });*/
+            addHotelList();
+        });
     /* !!!! Contintue Google Maps API !!!! */
     }).then(function() {
         console.log({lat: addLat, lng: addLng});
@@ -121,6 +120,29 @@ $(".btn-floating").on("click", function() {
     const destination = $(this).parent().parent()[0].attributes[2].value;
     getDirections(destination);
 });
+
+//add list of hotels to page
+function addHotelList(){
+    for(var i = 0; i < hotels.length; i++){
+        var hotel = hotels[i];
+        var name = hotel.property_name;
+        var addressline = hotel.address.line1;
+        var city = hotel.address.city;
+        var state = hotel.address.region;
+        var rating = "No Rating found";
+        if(!hotel.awards[0] === undefined){
+
+            rating = hotel.awards[0].provider +": "+hotel.awards[0].rating;
+        }
+        //var tablerow = $("<tr>").append($("<td>")).text(hotel.property_name)
+        //tablerow.append($("<td>")).text(addressline+" "+city+", "+state)
+        //tablerow.append($("<td>")).text(rating);
+        $("#hotel-list").append(`<tr>
+        <td>${name}</td>
+        <td>${addressline} ${city}, ${state}</td>
+        <td>${rating}</td>`);
+    }
+}
 
 function getDirections(destination) {
     console.log("Inside getDirections function.");
