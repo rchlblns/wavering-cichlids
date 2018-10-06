@@ -1,11 +1,11 @@
-body{
+body {
     background-image: url("../images/about.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-#navbar{
+#navbar {
     font-family: 'BioRhyme', serif;
 }
 
@@ -16,7 +16,7 @@ h2{
 }
 
 /* spacing between the headers with our names */
-.collapsible-header{
+.collapsible-header {
     margin: 3px;
     color: #000;
     font-weight: bold;
@@ -24,11 +24,11 @@ h2{
     font-family: 'Poppins', sans-serif;
 }
 
-.collapsible-header:hover{
+.collapsible-header:hover {
     background-color: rgba(207, 207, 207, 0.877);
 }
 
-.collapsible-body{
+.collapsible-body {
     background-color: rgba(0, 0, 0, 0.699);
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
