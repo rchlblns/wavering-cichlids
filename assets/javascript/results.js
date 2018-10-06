@@ -90,6 +90,7 @@ function callback(result, status) {
         // const resultDescription = $("h2").text(result[i].name);
         $(`#result${i} img`).attr("src", imgURL);
         $(`#result${i} .card-title`).text(resultName);
+        $(`#result${i} .card-title`).attr("class", "resultsTitle");
         }
     }
     else if (status === googleStatus.ERROR) {
@@ -126,11 +127,12 @@ function getDirections(destination) {
     const directionsRequest = new google.maps.DirectionsService();
     const directionsResults = new google.maps.DirectionsRenderer();
     directionsResults.setMap(map);
+    const googleDest = new google.maps.Place(destination);
     console.log(googleLatLng);
     console.log(destination);
     const request = {
         origin: googleLatLng,
-        destination: destination,
+        destination: googleDest,
         travelMode: "DRIVING",
         // waypoints: DirectionsWaypoint,
         // optimizeWaypoints: false,
