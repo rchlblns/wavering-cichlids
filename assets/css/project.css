@@ -1,13 +1,13 @@
 
 #navbar{
-    font-family: 'Graduate', cursive;
+    font-family: 'BioRhyme', serif;
     text-shadow: black 1px 2px 6px;
 }
 
 /* title of paragraph */
 .center-align{
     padding: 5px;
-    font-family: 'Alike Angular', serif;
+    font-family: 'Poppins', sans-serif;
 }
 .nav-body{
     text-shadow: black 1px 2px 6px;
@@ -21,7 +21,7 @@
     margin-top: -79px;
 }
 #modal1{
-    font-family: 'Alike Angular', serif;
+    font-family: 'Poppins', sans-serif;
     text-shadow: black 0px 0px 1px;
 
 }

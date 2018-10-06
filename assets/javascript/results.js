@@ -58,6 +58,10 @@ function initMap() {
         gestureHandling: "cooperative",
         noClear: true
     });
+    const marker = new google.maps.Marker({
+        position: googleLatLng, 
+        map: map
+    });
     $("#map").css("background-color", "red");
     console.log(radiusMeters);
     const request = {
@@ -80,15 +84,13 @@ function callback(result, status) {
         console.log(result[i]);
         $(`#result${i}`).attr("value", result[i].place_id)
         console.log(result[i].name);
-        let resultName = $("<h2>").text(result[i].name);
+        let resultName = result[i].name;
         let imgURL = result[i].photos[0].getUrl();
         console.log(imgURL);
-        let resultImg = $("<img>").attr("src", imgURL);
         // const resultDescription = $("h2").text(result[i].name);
-        $(`#result${i}`)
-                    .append(resultName)
-                    .append(resultImg)
-                    // .append(resultDescription);
+        $(`#result${i} img`).attr("src", imgURL);
+        $(`#result${i} .card-title`).text(resultName);
+        $(`#result${i} .card-title`).attr("class", "resultsTitle");
         }
     }
     else if (status === googleStatus.ERROR) {
@@ -114,9 +116,9 @@ function callback(result, status) {
     }
 }
 
-$(".card-panel").on("click", function() {
-    console.log($(this)[0].attributes[2].value);
-    const destination = $(this)[0].attributes[2].value;
+$(".btn-floating").on("click", function() {
+    console.log($(this).parent().parent()[0].attributes[2].value);
+    const destination = $(this).parent().parent()[0].attributes[2].value;
     getDirections(destination);
 });
 
@@ -125,11 +127,12 @@ function getDirections(destination) {
     const directionsRequest = new google.maps.DirectionsService();
     const directionsResults = new google.maps.DirectionsRenderer();
     directionsResults.setMap(map);
+    const googleDest = new google.maps.Place(destination);
     console.log(googleLatLng);
     console.log(destination);
     const request = {
         origin: googleLatLng,
-        destination: destination,
+        destination: googleDest,
         travelMode: "DRIVING",
         // waypoints: DirectionsWaypoint,
         // optimizeWaypoints: false,
