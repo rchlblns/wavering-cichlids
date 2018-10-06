@@ -30,6 +30,9 @@ body{
   font-weight: bold;
   font-family: 'Alike Angular', serif;
 }
+.resultsTitle{
+  font-size: 20px;
+}
 .card-panel img {
   width: 100%;
 }

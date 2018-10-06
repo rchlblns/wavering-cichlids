@@ -21,7 +21,7 @@
     <!-- navigation bar on head -->
     <nav id="navbar" class="grey lighten-1 z-depth-5 hoverable">
         <div class="nav-wrapper blue-grey darken-1">
-            <a href="./index.html" class="brand-logo hoverable">THE US ROAD TRAVEL EXPERIENCE</a>
+            <a href="./index.html" class="brand-logo hoverable">THE ROAD AHEAD</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
@@ -46,57 +46,62 @@
         </div>
     </div>
 
-    <a id="hotel-button" class="dropdown-trigger btn z-depth-5 blue darken-4 " href='#' data-target='dropdown1'>List of Hotels!</a>
-
-    <!-- Dropdown Structure -->
-    <table id="dropdown1" class='dropdown-content'>
-        <tbody>
-            <tr>
-            <td id="hotel-list"></td>
-            </tr>
-        </tbody>
-    </table>
-    
     <!-- start of cards -->
     <div class="container center-align">
         <div class="row">
             <div class="col s4 m4">
                 <div class="card z-depth-5" id="result0">
-                    <div class="card-image">
-                        <span class="card-title">Card Title</span>
+                    <div class="card-image">                      
+                        <img src="">
                         <a class="pulse btn-floating z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
                             <i class="material-icons">add</i>
                         </a>
-                    </div>
+                    </div>             
+                    <span class="card-title">Card Title</span>
                 </div>
             </div>
 
             <div class="col s4 m4">
                 <div class="card z-depth-5" id="result1">
-                    <div class="card-image">
-                        <span class="card-title">Card Title</span>
+                    <div class="card-image">           
+                        <img src="">
                         <a class="pulse btn-floating z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
                             <i class="material-icons">add</i>
                         </a>
                     </div>
+                    <span class="card-title">Card Title</span>
                 </div>
             </div>
 
             <div class="col s4 m4">
                 <div class="card z-depth-5" id="result2">
                     <div class="card-image">
-                        <span class="card-title">Card Title</span>
+                        <img src="">
                         <a class="pulse btn-floating z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
                             <i class="material-icons">add</i>
                         </a>
                     </div>
+                    <span class="card-title">Card Title</span>
                 </div>
             </div>
         </div>
     </div>
     <!-- </div>  -->
 
-
+    <div class="container">
+        <table id="dropdown1" class='dropdown-content'>
+            <thead>
+                <tr id="table-head">
+                    <th>Hotel</th>
+                    <th>Address</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody id="hotel-list">
+                
+            </tbody>
+        </table>
+    </div>
 
 
     <!--jquery link  -->
