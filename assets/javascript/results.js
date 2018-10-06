@@ -114,10 +114,9 @@ function callback(result, status) {
 }
 
 $(".btn-floating").on("click", function() {
-    console.log($(this));
-    // console.log($(this)[0].attributes[2].value);
-    // const destination = $(this)[0].attributes[2].value;
-    // getDirections(destination);
+    console.log($(this).parent().parent()[0].attributes[2].value);
+    const destination = $(this).parent().parent()[0].attributes[2].value;
+    getDirections(destination);
 });
 
 function getDirections(destination) {
