@@ -28,7 +28,7 @@ body{
   background-color: #848C8E;
   color:white;
   font-weight: bold;
-  font-family: 'Alike Angular', serif;
+  font-family: 'Poppins', sans-serif;
 }
 .resultsTitle{
   font-size: 20px;
@@ -44,6 +44,10 @@ img{
   height:150px;
 }
 
-.card-title {
+.card-title, #dropdown1 {
   font-family: 'Poppins', sans-serif;
+}
+
+#table-head {
+  font-weight: bold;
 }
