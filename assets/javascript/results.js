@@ -78,7 +78,6 @@ function callback(result, status) {
     if (status === googleStatus.OK) {
         console.log("The response contains a valid result.");
         for (i = 0; i < 3; i++) {
-        console.log(result[i]);
         $(`#result${i}`).attr("value", result[i].place_id)
         let resultName = result[i].name;
         let imgURL = result[i].photos[0].getUrl();
