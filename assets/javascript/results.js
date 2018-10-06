@@ -62,6 +62,7 @@ function initMap() {
     const request = {
         location: googleLatLng,
         radius: radiusMeters,
+        keyword: [entertainment],
         // rankBy: google.maps.places.RankBy.DISTANCE, 
         /*Note that you cannot specify a custom bounds and/or radius if you specify RankBy.DISTANCE. When you specify RankBy.DISTANCE, one or more of keyword, name, or type is required.*/
         type: entertainment
@@ -78,8 +79,8 @@ function callback(result, status) {
     const googleStatus = google.maps.places.PlacesServiceStatus;
     if (status === googleStatus.OK) {
         console.log("The response contains a valid result.");
+        console.log(result);
         for (i = 0; i < 3; i++) {
-        console.log(result[i]);
         $(`#result${i}`).attr("value", result[i].place_id)
         let resultName = result[i].name;
         let imgURL = result[i].photos[0].getUrl();
