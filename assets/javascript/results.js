@@ -56,6 +56,10 @@ function initMap() {
         gestureHandling: "cooperative",
         noClear: true
     });
+    const marker = new google.maps.Marker({
+        position: googleLatLng, 
+        map: map
+    });
     $("#map").css("background-color", "red");
     console.log(radiusMeters);
     const request = {
