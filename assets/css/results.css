@@ -16,5 +16,11 @@ body{
     font-family: 'Graduate', cursive;
     text-shadow: black 1px 2px 6px;
 }
+#map {
+  width: 90vw;
+  height: 40vh;
+} 
 
-
+.card-panel img {
+  width: 100%;
+}
