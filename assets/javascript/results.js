@@ -137,10 +137,11 @@ function addHotelList(){
         //var tablerow = $("<tr>").append($("<td>")).text(hotel.property_name)
         //tablerow.append($("<td>")).text(addressline+" "+city+", "+state)
         //tablerow.append($("<td>")).text(rating);
-        $("#hotel-list").append(`<tr>
+        $("#hotel-list").append(`<tr class="hotel-table-row">
         <td>${name}</td>
         <td>${addressline} ${city}, ${state}</td>
-        <td>${rating}</td>`);
+        <td>${rating}</td>
+        </td>`);
     }
 }
 
