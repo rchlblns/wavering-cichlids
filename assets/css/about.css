@@ -5,7 +5,7 @@ body{
     background-attachment: fixed;
 }
 #navbar{
-    font-family: 'Graduate', cursive;
+    font-family: 'BioRhyme', serif;
 }
 
 /* head */
@@ -19,13 +19,13 @@ h2{
     color: #000;
     font-weight: bold;
     text-shadow: black 1px 2px 6px;
-    font-family: 'Alike Angular', serif;
+    font-family: 'Poppins', sans-serif;
 }
 .collapsible-header:hover{
     background-color: rgba(207, 207, 207, 0.877);
 }
 .collapsible-body{
     background-color: rgba(0, 0, 0, 0.699);
-    font-family: 'Alike Angular', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
