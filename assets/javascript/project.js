@@ -29,11 +29,11 @@ var addLng;
 var radiusMeters;
 var entertainment;
 
-var user = {
-  name: "",
-  questionAnswers: []
+// var user = {
+//   name: "",
+//   questionAnswers: []
 
-}
+// }
 
 //main javascript code
 $(document).ready(function () {
@@ -45,12 +45,12 @@ $(document).ready(function () {
     addressInput = $("#question-address").val().trim().replace(/ /g, "+");
     console.log("User addres input is " + addressInput);
     // grab user input for prefered entertainment and store to variable
-    var question1ID = $("#question-option1").attr("data-target");
+    var questionEntertainment = $("#question-option1").attr("data-target");
     //  !!!!!!!!!!!!!!! not a question !!!!!!!!!!!!!!!!!!
-    var question2ID = $("#question-option2").attr("data-target");
-    user.questionAnswers.push($("#" + question1ID).attr("value"));
-    console.log($("#" + question1ID).attr("value"));
-    user.questionAnswers.push($("#" + question2ID).attr("value"));
+    //var question2ID = $("#question-option2").attr("data-target");
+    entertainment = $("#" + questionEntertainment).attr("value");
+    // console.log($("#" + question1ID).attr("value"));
+    // user.questionAnswers.push($("#" + question2ID).attr("value"));
     // grab value from range slider 2) radius and save to a variable
     const radiusMiles = $("#question-range").val();
     console.log("User radius input in miles is " + radiusMiles);
@@ -59,8 +59,13 @@ $(document).ready(function () {
     console.log("Miles converted to meters is " + radiusMeters);
     // run function that select a keyword for Google Nearby Search
     // keywordPicker():
-    console.log(user.questionAnswers);
+    //console.log(user.questionAnswers);
     // console.log output: 3831+Kristin+Lee+Ln,+Houston,+TX+77014 (spaces not allowed in URL)
+    sessionStorage.setItem("addressInput", addressInput);
+    sessionStorage.setItem("entertainment", entertainment);
+    sessionStorage.setItem("radiusMeters", radiusMeters);
+
+    window.location.href = "results.html";
   });
 }); 
 
