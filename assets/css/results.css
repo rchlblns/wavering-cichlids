@@ -40,3 +40,7 @@ img{
   widows: 150px;
   height:150px;
 }
+
+.card-title {
+  font-family: 'Poppins', sans-serif;
+}
