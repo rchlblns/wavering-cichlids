@@ -36,6 +36,7 @@ $(document).ready(function() {
             console.log("HOTELS:::");
             console.log(hotels);
             console.log(window.location);
+            addHotelList();
         });
     /* !!!! Contintue Google Maps API !!!! */
     }).then(function() {
@@ -117,6 +118,29 @@ $(".card-panel").on("click", function() {
     const destination = $(this)[0].attributes[2].value;
     getDirections(destination);
 });
+
+//add list of hotels to page
+function addHotelList(){
+    for(var i = 0; i < hotels.length; i++){
+        var hotel = hotels[i];
+        var name = hotel.property_name;
+        var addressline = hotel.address.line1;
+        var city = hotel.address.city;
+        var state = hotel.address.region;
+        var rating = "No Rating found";
+        if(!hotel.awards[0] === undefined){
+
+            rating = hotel.awards[0].provider +": "+hotel.awards[0].rating;
+        }
+        //var tablerow = $("<tr>").append($("<td>")).text(hotel.property_name)
+        //tablerow.append($("<td>")).text(addressline+" "+city+", "+state)
+        //tablerow.append($("<td>")).text(rating);
+        $("#hotel-list").append(`<tr>
+        <td>${name}</td>
+        <td>${addressline} ${city}, ${state}</td>
+        <td>${rating}</td>`);
+    }
+}
 
 function getDirections(destination) {
     console.log("Inside getDirections function.");
