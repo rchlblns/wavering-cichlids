@@ -1,3 +1,4 @@
+
 $('.dropdown-trigger').dropdown();
 // global variable declaration for API specific data
 var map;
