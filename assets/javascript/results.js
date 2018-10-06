@@ -27,7 +27,7 @@ $(document).ready(function() {
 
         /* !!!!!start travel API!!!! */
         //query for list of hotels
-        /*var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
+        var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
         $.ajax({
             url: travelURL,
             method: "GET"
@@ -35,10 +35,8 @@ $(document).ready(function() {
             hotels = response.results;
             console.log("HOTELS:::");
             console.log(hotels);
-            localStorage.setItem("hotels", JSON.stringify(hotels));
             console.log(window.location);
-            window.location.href= "results.html";
-        });*/
+        });
     /* !!!! Contintue Google Maps API !!!! */
     }).then(function() {
         console.log({lat: addLat, lng: addLng});
