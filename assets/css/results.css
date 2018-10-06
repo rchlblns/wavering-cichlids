@@ -15,7 +15,7 @@ body{
   }
 /* navbar control  */
  #navbar {
-    font-family: 'Graduate', cursive;
+    font-family: 'BioRhyme', serif;
     text-shadow: black 1px 2px 6px;
 }
 #map {
@@ -30,6 +30,9 @@ body{
   font-weight: bold;
   font-family: 'Alike Angular', serif;
 }
+.resultsTitle{
+  font-size: 20px;
+}
 .card-panel img {
   width: 100%;
 }
@@ -38,5 +41,9 @@ body{
 }
 img{
   widows: 150px;
-  height: 150px;
+  height:150px;
+}
+
+.card-title {
+  font-family: 'Poppins', sans-serif;
 }
