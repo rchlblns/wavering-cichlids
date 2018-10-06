@@ -23,6 +23,11 @@ body{
   height: 40vh;
   margin-top: 3px;
 }
+h3{
+  font-family: 'Poppins', sans-serif;
+  text-shadow: black 1px 2px 6px;
+
+}
  /*card body and style */
 .card{
   margin-top: 50px;
@@ -35,6 +40,7 @@ body{
 .resultsTitle{
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
+  text-shadow: black 1px 2px 6px;
 }
 .card-panel img {
   width: 100%;
