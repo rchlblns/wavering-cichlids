@@ -4,11 +4,11 @@ body{
     background-position: center;
     background-attachment: fixed;
 }
+/* head page navbar */
 #navbar{
     font-family: 'BioRhyme', serif;
 }
-
-/* head */
+/* head for the about us */
 h2{
     color:#e3f2fd;
     font-family: 'Poppins', sans-serif;

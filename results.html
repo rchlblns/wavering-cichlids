@@ -21,14 +21,17 @@
     <!-- navigation bar on head -->
     <nav id="navbar" class="grey lighten-1 z-depth-5 hoverable">
         <div class="nav-wrapper blue-grey darken-1">
+            <!-- title of navbar -->
             <a href="./index.html" class="brand-logo hoverable">THE ROAD AHEAD</a>
+            <!-- mobile menu only -->
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
+            <!-- right side of navbar with home and about link -->
             <ul class="right hide-on-med-and-down">
                 <li>
                     <a href="./index.html">
-                        <i class="material-icons">home</i>
+                    <i class="material-icons">home</i>
                     </a>
                 </li>
                 <li>
@@ -39,19 +42,21 @@
     </nav>
     <!-- end  -->
 
-    <!-- <div class="container"> -->
+    <!-- map section -->
     <div class="center-align">
         <div class="row">
             <div class="col s12 z-depth-5" id="map"></div>
         </div>
     </div>
 
+    <!-- center title for all 3 of your results -->
     <div class="container center-align">
         <h3>YOUR RESULTS!</h3>
     </div>
-    <!-- start of cards -->
+
     <div class="container center-align">
         <div class="row">
+            <!-- start of card 1 -->
             <div class="col s4 m4">
                 <div class="card z-depth-5" id="result0">
                     <div class="card-image">                      
@@ -63,7 +68,7 @@
                     <span class="card-title">Card Title</span>
                 </div>
             </div>
-
+            <!-- start of card 2 -->
             <div class="col s4 m4">
                 <div class="card z-depth-5" id="result1">
                     <div class="card-image">           
@@ -75,7 +80,7 @@
                     <span class="card-title">Card Title</span>
                 </div>
             </div>
-
+            <!-- start of card 3 -->
             <div class="col s4 m4">
                 <div class="card z-depth-5" id="result2">
                     <div class="card-image">
@@ -89,8 +94,7 @@
             </div>
         </div>
     </div>
-    <!-- </div>  -->
-
+<!-- start of hotel table list -->
     <div class="container">
         <table id="dropdown1">
             <thead>
@@ -115,6 +119,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q&libraries=places"></script>
     <!-- javacript link -->
     <script type="text/javascript" src="./assets/javascript/project.js"></script>
+    <!-- javascript link for another file that is necessary -->
     <script type="text/javascript" src="./assets/javascript/results.js"></script>
 </body>
 
