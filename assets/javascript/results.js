@@ -1,8 +1,9 @@
-
 $('.dropdown-trigger').dropdown();
 // global variable declaration for API specific data
 var map;
 var googleLatLng;
+var directionsRequest;
+var directionsResults;
 var hotels = [];
 
 // set variables from session storage
@@ -11,11 +12,8 @@ var radiusMeters = sessionStorage.getItem("radiusMeters");
 var entertainment = sessionStorage.getItem("entertainment");
 
 $(document).ready(function() {
-    console.log(radiusMeters);
-    console.log("Results.html has loaded.");
     /* !!!! start Google API !!! */
     var googleURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${addressInput}&country=US&key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q`;
-    console.log(googleURL);
     $.ajax({
         url: googleURL,
         method: "GET"
@@ -41,14 +39,12 @@ $(document).ready(function() {
         });*/
     /* !!!! Contintue Google Maps API !!!! */
     }).then(function() {
-        console.log({lat: addLat, lng: addLng});
         initMap();
     });
 });
 
 // start of google maps api functions
 function initMap() {
-    console.log("Inside initMap function.");
     // latitude and longitude converted to a google map coordinate
     googleLatLng = new google.maps.LatLng(addLat, addLng);
     map = new google.maps.Map(document.getElementById("map"), {
@@ -63,7 +59,6 @@ function initMap() {
         map: map
     });
     $("#map").css("background-color", "red");
-    console.log(radiusMeters);
     const request = {
         location: googleLatLng,
         radius: radiusMeters,
@@ -73,21 +68,21 @@ function initMap() {
     }
     const placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.nearbySearch(request, callback);
+
+    directionsRequest = new google.maps.DirectionsService();
+    directionsResults = new google.maps.DirectionsRenderer();
+    directionsResults.setMap(map);
 }
 
 function callback(result, status) {
-    console.log("Inside callback function.");
     const googleStatus = google.maps.places.PlacesServiceStatus;
     if (status === googleStatus.OK) {
         console.log("The response contains a valid result.");
         for (i = 0; i < 3; i++) {
         console.log(result[i]);
         $(`#result${i}`).attr("value", result[i].place_id)
-        console.log(result[i].name);
         let resultName = result[i].name;
         let imgURL = result[i].photos[0].getUrl();
-        console.log(imgURL);
-        // const resultDescription = $("h2").text(result[i].name);
         $(`#result${i} img`).attr("src", imgURL);
         $(`#result${i} .card-title`).text(resultName);
         $(`#result${i} .card-title`).attr("class", "resultsTitle");
@@ -117,22 +112,17 @@ function callback(result, status) {
 }
 
 $(".btn-floating").on("click", function() {
-    console.log($(this).parent().parent()[0].attributes[2].value);
     const destination = $(this).parent().parent()[0].attributes[2].value;
     getDirections(destination);
 });
 
 function getDirections(destination) {
-    console.log("Inside getDirections function.");
-    const directionsRequest = new google.maps.DirectionsService();
-    const directionsResults = new google.maps.DirectionsRenderer();
-    directionsResults.setMap(map);
-    const googleDest = new google.maps.Place(destination);
-    console.log(googleLatLng);
-    console.log(destination);
+    const place = {
+        placeId: destination
+    }
     const request = {
         origin: googleLatLng,
-        destination: googleDest,
+        destination: place,
         travelMode: "DRIVING",
         // waypoints: DirectionsWaypoint,
         // optimizeWaypoints: false,
