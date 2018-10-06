@@ -29,38 +29,29 @@ var addLng;
 var radiusMeters;
 var entertainment;
 
-var user = {
+/*var user = {
   name: "",
   questionAnswers: []
 
-}
+}*/
 
 //main javascript code
 $(document).ready(function () {
-  
   // "finish" button click submit form and store variables to local storage
-  $("#finish-button").on("click", function (event) {
+  $("#finish-button").on("click", function () {
     event.preventDefault();
     // grab user input for address and stre in a variable
     addressInput = $("#question-address").val().trim().replace(/ /g, "+");
     console.log("User addres input is " + addressInput);
     // grab user input for prefered entertainment and store to variable
-    var question1ID = $("#question-option1").attr("data-target");
-    //  !!!!!!!!!!!!!!! not a question !!!!!!!!!!!!!!!!!!
-    var question2ID = $("#question-option2").attr("data-target");
-    user.questionAnswers.push($("#" + question1ID).attr("value"));
-    console.log($("#" + question1ID).attr("value"));
-    user.questionAnswers.push($("#" + question2ID).attr("value"));
+    entertainment = $("#question-entertainment").val();
+    console.log(entertainment);
     // grab value from range slider 2) radius and save to a variable
     const radiusMiles = $("#question-range").val();
     console.log("User radius input in miles is " + radiusMiles);
     // convert the user's input desired radius in miles to drive to distance in meters for use with the APIs
     radiusMeters = radiusMiles * 1609.344;
     console.log("Miles converted to meters is " + radiusMeters);
-    // run function that select a keyword for Google Nearby Search
-    // keywordPicker():
-    console.log(user.questionAnswers);
-    // console.log output: 3831+Kristin+Lee+Ln,+Houston,+TX+77014 (spaces not allowed in URL)
   });
 }); 
 

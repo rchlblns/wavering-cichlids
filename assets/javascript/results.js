@@ -4,9 +4,9 @@ var googleLatLng;
 var hotels = [];
 
 // Variables set for testing DO NOT REMOVE
-addressInput = "3831+Kristin+Lee+Ln,+Houston,+TX+77014";
-radiusMeters = 500 * 1609.344;
-entertainment = "museum";
+// addressInput = "3831+Kristin+Lee+Ln,+Houston,+TX+77014";
+// radiusMeters = 500 * 1609.344;
+// entertainment = "museum";
 
 $(document).ready(function() {
     console.log("Results.html has loaded.");
