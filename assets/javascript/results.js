@@ -79,8 +79,8 @@ function callback(result, status) {
     const googleStatus = google.maps.places.PlacesServiceStatus;
     if (status === googleStatus.OK) {
         console.log("The response contains a valid result.");
-        for (i = 0; i < 3; i++) {
         console.log(result);
+        for (i = 0; i < 3; i++) {
         $(`#result${i}`).attr("value", result[i].place_id)
         let resultName = result[i].name;
         let imgURL = result[i].photos[0].getUrl();
