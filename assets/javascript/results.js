@@ -26,7 +26,7 @@ $(document).ready(function() {
 
         /* !!!!!start travel API!!!! */
         //query for list of hotels
-        var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&check_in=2018-12-15&check_out=2018-12-16`;
+        var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&number_of_results=5&check_in=2018-12-15&check_out=2018-12-16`;
         $.ajax({
             url: travelURL,
             method: "GET"
@@ -133,10 +133,11 @@ function addHotelList(){
         //var tablerow = $("<tr>").append($("<td>")).text(hotel.property_name)
         //tablerow.append($("<td>")).text(addressline+" "+city+", "+state)
         //tablerow.append($("<td>")).text(rating);
-        $("#hotel-list").append(`<tr>
+        $("#hotel-list").append(`<tr class="hotel-table-row">
         <td>${name}</td>
         <td>${addressline} ${city}, ${state}</td>
-        <td>${rating}</td>`);
+        <td>${rating}</td>
+        </td>`);
     }
 }
 
