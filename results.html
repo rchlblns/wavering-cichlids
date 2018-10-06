@@ -21,7 +21,7 @@
     <!-- navigation bar on head -->
     <nav id="navbar" class="grey lighten-1 z-depth-5 hoverable">
         <div class="nav-wrapper blue-grey darken-1">
-            <a href="#!" class="brand-logo hoverable">THE US ROAD TRAVEL EXPERIENCE</a>
+            <a href="./index.html" class="brand-logo hoverable">THE US ROAD TRAVEL EXPERIENCE</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
@@ -46,11 +46,12 @@
         <div class="col s12" id="map"></div>
     </div>
 
-    <div class="row">
-        <div class="col s6">
-            <div class="col s12 card-panel hoverable" id="pickOne"> Hoverable Card Panel</div>
-            <div class="col s12 card-panel hoverable" id="pickTwo"> Hoverable Card Panel</div>
-            <div class="col s12 card-panel hoverable" id="pickThree"> Hoverable Card Panel</div>
+        <div class="row">
+            <div class="col s6">
+                <div class="col s12 card-panel hoverable" id="result0"> Hoverable Card Panel</div>
+                <div class="col s12 card-panel hoverable" id="result1"> Hoverable Card Panel</div>
+                <div class="col s12 card-panel hoverable" id="result2"> Hoverable Card Panel</div>
+            </div>
         </div>
     </div>
     <!-- </div>  -->
@@ -62,8 +63,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- materialize javascript link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Google Maps javascript link-->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q&libraries=places">
+    </script>
     <!-- javacript link -->
     <script type="text/javascript" src="./assets/javascript/project.js"></script>
+    <script type="text/javascript" src="./assets/javascript/results.js"></script>
 </body>
 
 </html>
