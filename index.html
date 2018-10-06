@@ -78,33 +78,32 @@
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="question-address" placeholder="2345 Austin Bloom St Houston, Tx" class="materialize-textarea"></textarea>
-                                <label class="black-text" for="textarea1">Location</label>
+                                <textarea id="question-address" placeholder="2345 Austin Bloom St Houston, Tx" class="materialize-textarea"></textarea>                                
                             </div>
                         </div>
                     </form>
                 </div>
                 <!-- question headings -->
-                    <label class="black-text col s6">
-                        <h5>Prefered Entertainment?</h5>
-                    </label>                
+                <label class="black-text col s6">
+                    <h4>Prefered Entertainment?</h4>
+                </label>
                 <!-- question one -->
                 <div class="input-field col 6 m6">
-                    <select id="question-option1" class="icons">
+                    <select id="question-entertainment" class="icons">
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="" data-icon="images/sample-1.jpg">Park</option>
-                        <option value="" data-icon="images/office.jpg">Museum</option>
-                        <option value="" data-icon="images/office.jpg">Campground</option>
-                        <option value="" data-icon="images/office.jpg">Bar</option>
+                        <option value="park" data-icon="images/sample-1.jpg">Park</option>
+                        <option value="museum" data-icon="images/office.jpg">Museum</option>
+                        <option value="campground" data-icon="images/office.jpg">Campground</option>
+                        <option value="bar" data-icon="images/office.jpg">Bar</option>
                     </select>
                 </div>
 
                 <!-- miles  -->
                 <div class="row">
-                    <form action="#" class="col s12">
-                        <p class="range-field black-text">Preference On Miles
-                            <input class="blue darken-4" type="range" id="question-range" min="50" max="1500" />
-                        </p>
+                    <form action="#" class="col s12 mt5">
+                        <h4 class="range-field black-text">Preference On Miles
+                            <input class="" type="range" id="question-range" min="50" max="1500" />
+                        </h4>
                     </form>
                 </div>
             </div>
