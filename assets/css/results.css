@@ -31,7 +31,7 @@ h3{
 }
  /*card body and style */
 .card{
-  margin-top: 50px;
+  margin-top: -100px;
   background-color: #848C8E;
   color:white;
   font-weight: bold;
@@ -45,6 +45,7 @@ h3{
 }
 /* card button style */
 .pulse {
+  opacity: .8;
   -webkit-transition: -webkit-transform .8s ease-in-out;
           transition:         transform .8s ease-in-out;
 }
@@ -52,8 +53,7 @@ h3{
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
-/* card images */
+/* carousel images */
 img{
-  widows: 150px;
-  height:150px;
+  height:250px;
 }

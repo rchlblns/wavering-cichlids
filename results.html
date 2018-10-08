@@ -18,20 +18,18 @@
 </head>
 
 <body>
-    <!-- navigation bar on head -->
+    <!-- navigation bar-->
     <nav id="navbar" class="grey lighten-1 z-depth-5 hoverable">
         <div class="nav-wrapper blue-grey darken-1">
-            <!-- title of navbar -->
+            <!-- navbar title -->
             <a href="./index.html" class="brand-logo hoverable">THE ROAD AHEAD</a>
-            <!-- mobile menu only -->
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                <i class="material-icons">menu</i>
-            </a>
-            <!-- right side of navbar with home and about link -->
+            <!-- navbar menu for mobile devices -->
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>            <!-- right side of nab with home icon and About page link -->
+            <!-- navbarmenu -->
             <ul class="right hide-on-med-and-down">
                 <li>
                     <a href="./index.html">
-                    <i class="material-icons">home</i>
+                        <i class="material-icons">home</i>
                     </a>
                 </li>
                 <li>
@@ -40,6 +38,16 @@
             </ul>
         </div>
     </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="./index.html">
+                <i class="material-icons">home</i>
+            </a>
+        </li>
+        <li>
+            <a href="./about.html">ABOUT</a>
+        </li>
+    </ul>
     <!-- end  -->
 
     <!-- map section -->
@@ -51,17 +59,17 @@
 
     <!-- center title for all 3 of your results -->
     <div class="container center-align">
-        <h3 class>YOUR RESULTS!</h3>
+        <h3 class>Choose One of Your Three Results!</h3>
     </div>
 
     <div class="container center-align">
-        <div class="row">
+        <div class="carousel">
             <!-- start of card 1 -->
-            <div class="col s4 m4">
+            <div class="carousel-item">
                 <div class="card z-depth-5" id="result0">
                     <div class="card-image">                      
                         <img src="">
-                        <a class="pulse btn-floating z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
+                        <a class="pulse btn-floating btn-small z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
                             <i class="material-icons">add</i>
                         </a>
                     </div>             
@@ -69,11 +77,11 @@
                 </div>
             </div>
             <!-- start of card 2 -->
-            <div class="col s4 m4">
+            <div class="carousel-item">
                 <div class="card z-depth-5" id="result1">
                     <div class="card-image">           
                         <img src="">
-                        <a class="pulse btn-floating z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
+                        <a class="pulse btn-floating btn-small z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
                             <i class="material-icons">add</i>
                         </a>
                     </div>
@@ -81,11 +89,11 @@
                 </div>
             </div>
             <!-- start of card 3 -->
-            <div class="col s4 m4">
+            <div class="carousel-item">
                 <div class="card z-depth-5" id="result2">
                     <div class="card-image">
                         <img src="">
-                        <a class="pulse btn-floating z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
+                        <a class="pulse btn-floating btn-small z-depth-5 blue darken-4 halfway-fab waves-effect waves-light red">
                             <i class="material-icons">add</i>
                         </a>
                     </div>
