@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("../images/about.jpg");
     background-size: cover;
     background-position: center;
@@ -13,18 +13,21 @@ h2{
     color:#e3f2fd;
     font-family: 'Poppins', sans-serif;
 }
+
 /* spacing between the headers with our names */
-.collapsible-header{
+.collapsible-header {
     margin: 3px;
     color: #000;
     font-weight: bold;
     text-shadow: black 1px 2px 6px;
     font-family: 'Poppins', sans-serif;
 }
-.collapsible-header:hover{
+
+.collapsible-header:hover {
     background-color: rgba(207, 207, 207, 0.877);
 }
-.collapsible-body{
+
+.collapsible-body {
     background-color: rgba(0, 0, 0, 0.699);
     font-family: 'Poppins', sans-serif;
     font-weight: bold;

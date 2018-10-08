@@ -6,7 +6,7 @@
     text-shadow: black 1px 2px 6px;
 }
 /* title of paragraph */
-.center-align{
+.center-align {
     padding: 5px;
     font-family: 'Poppins', sans-serif;
 }
@@ -14,12 +14,14 @@
 .nav-body{
     text-shadow: black 1px 2px 6px;
 }
+
 /* paragraph background */
-#intro-par{
+#intro-par {
     border-radius: 5px;
 }
+
 /* finish button for the modal */
-#finish-button{
+#finish-button {
     margin-top: -79px;
 }
 /* edited text of modal */

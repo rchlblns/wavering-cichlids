@@ -37,6 +37,7 @@ var entertainment;
 
 //main javascript code
 $(document).ready(function () {
+  
   // "finish" button click submit form and store variables to local storage
   $("#finish-button").on("click", function () {
     event.preventDefault();
@@ -59,7 +60,8 @@ $(document).ready(function () {
 
     window.location.href = "results.html";
   });
-});
+  
+}); 
 
 
 /*function keywordPicker() {
