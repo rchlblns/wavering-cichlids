@@ -1,4 +1,4 @@
-
+// carousel function on results page :)
   $(document).ready(function(){
     $('.carousel').carousel();
   });
@@ -69,7 +69,7 @@ function initMap() {
         // rankBy: google.maps.places.RankBy.DISTANCE, 
         /*Note that you cannot specify a custom bounds and/or radius if you specify RankBy.DISTANCE. When you specify RankBy.DISTANCE, one or more of keyword, name, or type is required.*/
         type: entertainment
-    }
+    };
     const placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.nearbySearch(request, callback);
 
@@ -90,7 +90,7 @@ function callback(result, status) {
         $(`#result${i} img`).attr("src", imgURL);
         $(`#result${i} .card-title`).text(resultName);
         $(`#result${i} .card-title`).attr("class", "resultsTitle");
-        }
+        };
     }
     else if (status === googleStatus.ERROR) {
         console.log("There was a problem contacting the Google servers.");
@@ -132,7 +132,7 @@ function addHotelList(){
         if(!hotel.awards[0] === undefined){
 
             rating = hotel.awards[0].provider +": "+hotel.awards[0].rating;
-        }
+        };
         //var tablerow = $("<tr>").append($("<td>")).text(hotel.property_name)
         //tablerow.append($("<td>")).text(addressline+" "+city+", "+state)
         //tablerow.append($("<td>")).text(rating);
@@ -141,13 +141,13 @@ function addHotelList(){
         <td>${addressline} ${city}, ${state}</td>
         <td>${rating}</td>
         </td>`);
-    }
-}
+    };
+};
 
 function getDirections(destination) {
     const place = {
         placeId: destination
-    }
+    };
     const request = {
         origin: googleLatLng,
         destination: place,
@@ -155,7 +155,7 @@ function getDirections(destination) {
         // waypoints: DirectionsWaypoint,
         // optimizeWaypoints: false,
         provideRouteAlternatives: false
-    }
+    };
     directionsRequest.route(request, function(result, status) {
         if(status === "OK"){
             console.log("Route found.");
@@ -184,6 +184,6 @@ function getDirections(destination) {
         }
         else if(status === "UNKNOWN_ERROR"){
             console.log("Directions request could not be processed due to a server error. The request may succeed if you try again.");
-        }
+        };
     });
-}
+};

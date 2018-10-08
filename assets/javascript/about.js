@@ -2,8 +2,10 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
   });
-  //drop down
+
+//drop down
   $('.dropdown-trigger').dropdown();
+  
 //collapsable
 $(document).ready(function(){
     $('.collapsible').collapsible();

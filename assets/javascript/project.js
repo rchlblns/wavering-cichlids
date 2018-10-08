@@ -2,21 +2,23 @@
 $(document).ready(function () {
   $('.parallax').parallax();
 });
+
 //function for slide navbar
 $(document).ready(function () {
   $('.sidenav').sidenav();
 });
+
 //drop down
 $('.dropdown-trigger').dropdown();
-$(document).ready(function () {
-  $('.sidenav').sidenav();
-});
+
 //drop down
 $('.dropdown-trigger').dropdown();
+
 //modal
 $(document).ready(function () {
   $('.modal').modal();
 });
+
 //modal
 $(document).ready(function () {
   $('select').formSelect();
@@ -37,7 +39,6 @@ var entertainment;
 
 //main javascript code
 $(document).ready(function () {
-  
   // "finish" button click submit form and store variables to local storage
   $("#finish-button").on("click", function () {
     event.preventDefault();
@@ -60,7 +61,6 @@ $(document).ready(function () {
 
     window.location.href = "results.html";
   });
-  
 }); 
 
 
