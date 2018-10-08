@@ -1,5 +1,8 @@
 
-$('.dropdown-trigger').dropdown();
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+  
 // global variable declaration for API specific data
 var map;
 var googleLatLng;

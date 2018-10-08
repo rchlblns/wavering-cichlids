@@ -3,7 +3,7 @@
 
 <head>
     <!-- favicon -->
-    <link rel="shortcut icon" type="image/png" href="./assets/images/road-sunset.jpg" />
+    <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.jpg" />
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=BioRhyme:300|Poppins:200" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,9 +23,8 @@
             <!-- navbar title -->
             <a href="./index.html" class="brand-logo hoverable">THE ROAD AHEAD</a>
             <!-- navbar menu for mobile devices -->
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-            </a>
-            <!-- right side of nab with home icon and About page link -->
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>            <!-- right side of nab with home icon and About page link -->
+            <!-- navbarmenu -->
             <ul class="right hide-on-med-and-down">
                 <li>
                     <a href="./index.html">
@@ -38,6 +37,16 @@
             </ul>
         </div>
     </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="./index.html">
+                <i class="material-icons">home</i>
+            </a>
+        </li>
+        <li>
+            <a href="./about.html">ABOUT</a>
+        </li>
+    </ul>
     <!-- end  -->
 
     <!-- paralax container layout of the page -->
@@ -58,7 +67,7 @@
         </p>
         <!-- modal trigger -->
         <div class="container center-align">
-            <a href="#modal1" class="modal-trigger deep-orange accent-1 btn pulse btn-large waves-effect z-depth-5">Let's
+            <a href="#modal1" id="modal-button" class="modal-trigger deep-orange accent-1 btn pulse btn-large waves-effect z-depth-5">Let's
                 Go</a>
         </div>
     </div>
