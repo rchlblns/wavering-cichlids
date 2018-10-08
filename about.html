@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" type="image/png" href="./assets/images/road-sunset.jpg" />
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.jpg" />
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=BioRhyme:300|Poppins:200" rel="stylesheet">
     <!--Import Google Icon Font-->
@@ -14,18 +15,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About</title>
+    <title>About Us</title>
 </head>
 
 <body>
     <!-- navigation bar-->
     <nav id="navbar" class="grey lighten-1 z-depth-5 hoverable">
         <div class="nav-wrapper blue-grey darken-1">
+            <!-- navbar title -->
             <a href="./index.html" class="brand-logo hoverable">THE ROAD AHEAD</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-            </a>
+            <!-- navbar menu for mobile devices -->
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>            <!-- right side of nab with home icon and About page link -->
+            <!-- navbarmenu -->
             <ul class="right hide-on-med-and-down">
-
                 <li>
                     <a href="./index.html">
                         <i class="material-icons">home</i>
@@ -37,11 +39,21 @@
             </ul>
         </div>
     </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="./index.html">
+                <i class="material-icons">home</i>
+            </a>
+        </li>
+        <li>
+            <a href="./about.html">ABOUT</a>
+        </li>
+    </ul>
+    <!-- end  -->
 
     <!-- heading -->
     <div class="container">
         <h2 class="center-align">About Us</h2>
-
     </div>
 
     <!-- collapsible popouts for our individual bios :) -->
@@ -49,41 +61,40 @@
         <ul class="collapsible popout">
             <!-- Josephine -->
             <li>
-              <div class="collapsible-header">
-              <i class="material-icons purple darken-1">person_pin</i>Josephine</div>
-              <div class="collapsible-body white-text">
-                <span>Josephine, a geek and proud of it, is a coding newbie with experience in marketing, PR, and customer service.
-                  A graduate of Trinity University (San Antonio, TX), Josephine’s background is in psychology and communication,
-                  but her love has always been the arts. Though she tends to be more logical in her disposition; 
-                  she has always been drawn to anything creative and has found web development to be the perfect outlet.
-                </span>
-              </div>
+                <div class="collapsible-header">
+                    <i class="material-icons purple darken-1">person_pin</i>Josephine</div>
+                <div class="collapsible-body white-text">
+                    <span>Josephine, a geek and proud of it, is a coding newbie with experience in marketing, PR, and customer service.
+                    A graduate of Trinity University (San Antonio, TX), Josephine’s background is in psychology and communication,
+                    but her love has always been the arts. Though she tends to be more logical in her disposition; 
+                    she has always been drawn to anything creative and has found web development to be the perfect outlet.
+                    </span>
+                </div>
             </li>
             <!-- Matthew -->
             <li>
                 <div class="collapsible-header">
                     <i class="material-icons red accent-4">person_pin</i>Matthew</div>
                 <div class="collapsible-body white-text">
-                    <span>Lorem ipsum dolor sit amet.</span>
+                    <span>Matthew loves programing, gaming and music. he is passionate about developing innovative programming solutions to solve problems.</span>
                 </div>
             </li>
             <!-- Richelle -->
             <li>
-              <div class="collapsible-header">
-              <i class="material-icons cyan accent-3">person_pin</i>Richelle</div>
-              <div class="collapsible-body white-text">
-                <span>Originally from Dallas, Richelle works as a medical professional by day and is a student of the Houston Chapter of UT's Coding Bootcamp by night. When she's not coding (and drinking all the coffee) you can find her at the dog park with her mutt,
-                  or binge watch Great British Baking Show.
-                </span>
-              </div>
+                <div class="collapsible-header">
+                    <i class="material-icons cyan accent-3">person_pin</i>Richelle</div>
+                <div class="collapsible-body white-text">
+                    <span>Originally from Dallas, Richelle works as a medical professional by day and is a student of the Houston Chapter of UT's Coding Bootcamp by night. When she's not coding (and drinking all the coffee) you can find her at the dog park with her mutt,
+                    or binge watch Great British Baking Show.
+                    </span>
+                </div>
             </li>
             <!-- Jeffrey -->
             <li>
                 <div class="collapsible-header">
                     <i class="material-icons light-blue accent-3">person_pin</i>Jeffrey</div>
                 <div class="collapsible-body white-text">
-                    <span>Avid learner and computer enthusiast ready to graduate and redefine the world of IT.
-                        
+                    <span>Avid learner and computer enthusiast ready to graduate and redefine the world of IT.                        
                     </span>
                 </div>
             </li>
