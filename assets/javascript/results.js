@@ -125,8 +125,13 @@ function getPlaceDetails(id, card) {
             // createMarker(place);
             $(card).attr("value", place.place_id)
             let resultName = place.name;
-            let imgURL = place.photos[3].getUrl();
-            $(card + " img").attr("src", imgURL);
+            if(place.photos) {
+                let imgURL = place.photos[3].getUrl();
+                $(card + " img").attr("src", imgURL);
+            }
+            else {
+                $(card + " img").attr("alt", "No image available of " + resultName);
+            }
             $(card + " .card-title").text(resultName);
             $(card + " .card-title").attr("class", "resultsTitle");
         }
