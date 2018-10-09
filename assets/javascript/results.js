@@ -9,7 +9,7 @@ var googleLatLng;
 var directionsRequest;
 var directionsResults;
 var getNextPage;
-var j= 0;
+var j = 0;
 var hotels = [];
 
 // set variables from session storage
@@ -87,39 +87,51 @@ function callback(result, status, pagination) {
     getNextPage = pagination.hasNextPage;
     const googleStatus = google.maps.places.PlacesServiceStatus;
     if (status === googleStatus.OK) {
-        // if(getNextPage)
         console.log("The response contains a valid result.");
         console.log(result);
-        for (i = 0; i < result.length; i++) {
-            if(j === 3) {
-                console.log("J is equal to 3.");
-                return;
+        if(!getNextPage) {
+            for (i = 0; i < 3; i++) {
+                const id = result[i].place_id;
+                console.log(id);
+                getPlaceDetails(id, `#result${i}`);
             }
-            else {
-                distanceRequest.getDistanceMatrix({
-                    origins: [googleLatLng],
-                    destinations: [result[i].geometry.location],
-                    travelMode: "DRIVING"
-                }, function(response, status) {
-                    console.log("Inside calculateDistance funciton.");
-                    if(status === "OK") {
-                        console.log(response);
-                        console.log(response.rows[0].elements[0].distance.value);
-                        console.log(innerRadius);
-                        console.log(response.rows[0].elements[0].distance.value < innerRadius);
-                        if(response.rows[0].elements[0].distance.value < innerRadius){
-                            console.log("Distance too short.");
+        }
+        else if(getNextPage){
+            $.each(result, function(index, value) {
+                if(j === 3) {
+                    console.log("J is equal to 3.");
+                    return;
+                }
+                else {
+                    distanceRequest.getDistanceMatrix({
+                        origins: [googleLatLng],
+                        destinations: [result[index].geometry.location],
+                        travelMode: "DRIVING"
+                    }, function(response, status) {
+                        console.log("Inside calculateDistance funciton.");
+                        if(status === "OK") {
+                            if(response.rows[0].elements[0].distance.value < innerRadius){
+                                console.log("Distance too short.");
+                                if(index === 19) {
+                                    console.log("inside if statement.");
+                                    pagination.nextPage();
+                                }
+                            }
+                            else {
+                                console.log("Distance far enough.");
+                                const id = result[index].place_id;
+                                console.log(id);
+                                getPlaceDetails(id, `#result${j}`);
+                                j++;
+                                if(index === 19) {
+                                    console.log("inside if statement.");
+                                    pagination.nextPage();
+                                }
+                            }
                         }
-                        else {
-                            console.log("Distance far enough.");
-                            const id = result[i].place_id;
-                            console.log(id);
-                            getPlaceDetails(id, `#result${j}`);
-                            j++;
-                        }
-                    }
-                });
-            }
+                    });
+                }
+            });
         }
     }
     else if (status === googleStatus.ERROR) {
@@ -156,6 +168,7 @@ function getPlaceDetails(id, card) {
         const googleStatus = google.maps.places.PlacesServiceStatus;
         if (status === googleStatus.OK) {
             console.log("Found details for results cards.");
+            console.log(place);
             $(card).attr("value", place.place_id)
             let resultName = place.name;
             let imgURL = place.photos[3].getUrl();
