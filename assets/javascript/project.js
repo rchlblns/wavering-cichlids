@@ -27,6 +27,7 @@ var addressInput;
 var addLat;
 var addLng;
 var radiusMeters;
+var innerRadius;
 var entertainment;
 
 // var user = {
@@ -52,11 +53,13 @@ $(document).ready(function () {
     console.log("User radius input in miles is " + radiusMiles);
     // convert the user's input desired radius in miles to drive to distance in meters for use with the APIs
     radiusMeters = radiusMiles * 1609.344;
+    innerRadius = (radiusMiles - 30) * 1609.344;
     console.log("Miles converted to meters is " + radiusMeters);
 
     sessionStorage.setItem("addressInput", addressInput);
     sessionStorage.setItem("entertainment", entertainment);
     sessionStorage.setItem("radiusMeters", radiusMeters);
+    sessionStorage.setItem("innerRadius", innerRadius);
 
     window.location.href = "results.html";
   });

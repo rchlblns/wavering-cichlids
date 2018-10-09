@@ -8,12 +8,15 @@ var map;
 var googleLatLng;
 var directionsRequest;
 var directionsResults;
+var getNextPage;
+var j= 0;
 var hotels = [];
 
 // set variables from session storage
 var addressInput = sessionStorage.getItem("addressInput");
 var radiusMeters = sessionStorage.getItem("radiusMeters");
 var entertainment = sessionStorage.getItem("entertainment");
+var innerRadius = sessionStorage.getItem("innerRadius");
 
 $(document).ready(function() {
     /* !!!! start Google API !!! */
@@ -48,6 +51,7 @@ $(document).ready(function() {
 
 // start of google maps api functions
 function initMap() {
+    console.log("Inside initMap function.");
     // latitude and longitude converted to a google map coordinate
     googleLatLng = new google.maps.LatLng(addLat, addLng);
     map = new google.maps.Map(document.getElementById("map"), {
@@ -61,7 +65,6 @@ function initMap() {
         position: googleLatLng, 
         map: map
     });
-    $("#map").css("background-color", "red");
     const request = {
         location: googleLatLng,
         radius: radiusMeters,
@@ -78,15 +81,45 @@ function initMap() {
     directionsResults.setMap(map);
 }
 
-function callback(result, status) {
+function callback(result, status, pagination) {
+    console.log("Inside nearbySearch callback function.");
+    const distanceRequest = new google.maps.DistanceMatrixService();
+    getNextPage = pagination.hasNextPage;
     const googleStatus = google.maps.places.PlacesServiceStatus;
     if (status === googleStatus.OK) {
+        // if(getNextPage)
         console.log("The response contains a valid result.");
         console.log(result);
-        for (i = 0; i < 3; i++) {
-            const id = result[i].place_id;
-            console.log(id);
-            getPlaceDetails(id, `#result${i}`);
+        for (i = 0; i < result.length; i++) {
+            if(j === 3) {
+                console.log("J is equal to 3.");
+                return;
+            }
+            else {
+                distanceRequest.getDistanceMatrix({
+                    origins: [googleLatLng],
+                    destinations: [result[i].geometry.location],
+                    travelMode: "DRIVING"
+                }, function(response, status) {
+                    console.log("Inside calculateDistance funciton.");
+                    if(status === "OK") {
+                        console.log(response);
+                        console.log(response.rows[0].elements[0].distance.value);
+                        console.log(innerRadius);
+                        console.log(response.rows[0].elements[0].distance.value < innerRadius);
+                        if(response.rows[0].elements[0].distance.value < innerRadius){
+                            console.log("Distance too short.");
+                        }
+                        else {
+                            console.log("Distance far enough.");
+                            const id = result[i].place_id;
+                            console.log(id);
+                            getPlaceDetails(id, `#result${j}`);
+                            j++;
+                        }
+                    }
+                });
+            }
         }
     }
     else if (status === googleStatus.ERROR) {
@@ -120,12 +153,9 @@ function getPlaceDetails(id, card) {
     }
     const placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.getDetails(request, function(place, status) {
-        console.log("inside callback function for getPlaceDetails");
         const googleStatus = google.maps.places.PlacesServiceStatus;
         if (status === googleStatus.OK) {
-            console.log("The response contains a valid result.");
-            console.log(place);
-            // createMarker(place);
+            console.log("Found details for results cards.");
             $(card).attr("value", place.place_id)
             let resultName = place.name;
             let imgURL = place.photos[3].getUrl();
