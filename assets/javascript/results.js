@@ -84,12 +84,9 @@ function callback(result, status) {
         console.log("The response contains a valid result.");
         console.log(result);
         for (i = 0; i < 3; i++) {
-        $(`#result${i}`).attr("value", result[i].place_id)
-        let resultName = result[i].name;
-        let imgURL = result[i].photos[0].getUrl();
-        $(`#result${i} img`).attr("src", imgURL);
-        $(`#result${i} .card-title`).text(resultName);
-        $(`#result${i} .card-title`).attr("class", "resultsTitle");
+            const id = result[i].place_id;
+            console.log(id);
+            getPlaceDetails(id, `#result${i}`);
         }
     }
     else if (status === googleStatus.ERROR) {
@@ -113,6 +110,56 @@ function callback(result, status) {
     else if (status === googleStatus.ZERO_RESULTS) {
         console.log("No result was found for this request.");
     }
+}
+
+function getPlaceDetails(id, card) {
+    console.log("Inside getPlaceDetails function");
+    request = {
+        placeId: id,
+        fields: ["name", "place_id", "formatted_address", "photo", "url"]
+    }
+    const placesInfo = new google.maps.places.PlacesService(map);
+    placesInfo.getDetails(request, function(place, status) {
+        console.log("inside callback function for getPlaceDetails");
+        const googleStatus = google.maps.places.PlacesServiceStatus;
+        if (status === googleStatus.OK) {
+            console.log("The response contains a valid result.");
+            console.log(place);
+            // createMarker(place);
+            $(card).attr("value", place.place_id)
+            let resultName = place.name;
+            if(place.photos) {
+                let imgURL = place.photos[3].getUrl();
+                $(card + " img").attr("src", imgURL);
+            }
+            else {
+                $(card + " img").attr("alt", "No image available of " + resultName);
+            }
+            $(card + " .card-title").text(resultName);
+            $(card + " .card-title").attr("class", "resultsTitle");
+        }
+        else if (status === googleStatus.ERROR) {
+            console.log("There was a problem contacting the Google servers.");
+        }
+        else if (status === googleStatus.INVALID_REQUEST) {
+            console.log("This request was invalid.");
+        }
+        else if (status === googleStatus.OVER_QUERY_LIMIT) {
+            console.log("The webpage has gone over its request quota.");
+        }
+        else if (status === googleStatus.NOT_FOUND) {
+            console.log("The referenced location was not found in the Places database.");
+        }
+        else if (status === googleStatus.REQUEST_DENIED) {
+            console.log("The webpage is not allowed to use the PlacesService.");
+        }
+        else if (status === googleStatus.UNKNOWN_ERROR) {
+            console.log("The PlacesService request could not be processed due to a server error. The request may succeed if you try again.");
+        }
+        else if (status === googleStatus.ZERO_RESULTS) {
+            console.log("No result was found for this request.");
+        }
+    });
 }
 
 $(".btn-floating").on("click", function() {
