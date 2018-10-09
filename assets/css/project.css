@@ -1,27 +1,38 @@
+/* paralax no body needed here */
 
+/* head of web page navbar */
 #navbar{
     font-family: 'BioRhyme', serif;
     text-shadow: black 1px 2px 6px;
 }
-
 /* title of paragraph */
-.center-align{
+.center-align {
     padding: 5px;
     font-family: 'Poppins', sans-serif;
 }
+/* paragraph body */
 .nav-body{
     text-shadow: black 1px 2px 6px;
 }
+/* modal button styling */
+#modal-button {
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+            transition:         transform .8s ease-in-out;
+  }
+#modal-button:hover {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 /* paragraph background */
-#intro-par{
+#intro-par {
     border-radius: 5px;
 }
 /* finish button for the modal */
-#finish-button{
+#finish-button {
     margin-top: -79px;
 }
+/* edited text of modal */
 #modal1{
     font-family: 'Poppins', sans-serif;
     text-shadow: black 0px 0px 1px;
-
 }

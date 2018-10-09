@@ -1,5 +1,7 @@
-
-$('.dropdown-trigger').dropdown();
+$(document).ready(function(){
+    $('.carousel').carousel();
+});
+  
 // global variable declaration for API specific data
 var map;
 var googleLatLng;
@@ -13,7 +15,7 @@ var radiusMeters = sessionStorage.getItem("radiusMeters");
 var entertainment = sessionStorage.getItem("entertainment");
 
 $(document).ready(function() {
-    /* !!!! start Google API !!! */
+    /* start Google API */
     var googleURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${addressInput}&country=US&key=AIzaSyCkWLplfERYd7MKirTiRwl9rhCzsPDVN8Q`;
     $.ajax({
         url: googleURL,
@@ -24,7 +26,7 @@ $(document).ready(function() {
         var locdata = [addLat, addLng];
         localStorage.setItem("locdata", JSON.stringify(locdata));
 
-        /* !!!!!start travel API!!!! */
+        /* start travel API */
         //query for list of hotels
         var travelURL = `https://api.sandbox.amadeus.com/v1.2/hotels/search-circle?apikey=nG40G2MNyhpYFWNBKWFpW83hKIUnrkHO&latitude=${addLat}&longitude=${addLng}&radius=42&number_of_results=5&check_in=2018-12-15&check_out=2018-12-16`;
         $.ajax({
@@ -37,13 +39,14 @@ $(document).ready(function() {
             console.log(window.location);
             addHotelList();
         });
-    /* !!!! Contintue Google Maps API !!!! */
+    /* Contintue Google Maps API */
     }).then(function() {
         initMap();
     });
 });
 
 // start of google maps api functions
+// initMap sets up the map's display
 function initMap() {
     // latitude and longitude converted to a google map coordinate
     googleLatLng = new google.maps.LatLng(addLat, addLng);
@@ -54,33 +57,37 @@ function initMap() {
         gestureHandling: "cooperative",
         noClear: true
     });
+    // set map marker for the starting destination
     const marker = new google.maps.Marker({
         position: googleLatLng, 
         map: map
     });
-    $("#map").css("background-color", "red");
+    // nearbySearch request object for places data
     const request = {
         location: googleLatLng,
         radius: radiusMeters,
         keyword: [entertainment],
-        // rankBy: google.maps.places.RankBy.DISTANCE, 
-        /*Note that you cannot specify a custom bounds and/or radius if you specify RankBy.DISTANCE. When you specify RankBy.DISTANCE, one or more of keyword, name, or type is required.*/
         type: entertainment
     }
+    // create new Google places object for the nearbySearch
     const placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.nearbySearch(request, callback);
-
+    // initialize google directionsService and request data
     directionsRequest = new google.maps.DirectionsService();
     directionsResults = new google.maps.DirectionsRenderer();
+    // display directions on the map
     directionsResults.setMap(map);
 }
 
+// callback function for places info request
 function callback(result, status) {
     const googleStatus = google.maps.places.PlacesServiceStatus;
     if (status === googleStatus.OK) {
         console.log("The response contains a valid result.");
         console.log(result);
+        // cycle through 3 of the google place results
         for (i = 0; i < 3; i++) {
+            // store the place id in id variable for use in getPlaceDetails funciton
             const id = result[i].place_id;
             console.log(id);
             getPlaceDetails(id, `#result${i}`);
@@ -108,21 +115,22 @@ function callback(result, status) {
         console.log("No result was found for this request.");
     }
 }
-
+// function to get place specific details like name, place id, etc.
 function getPlaceDetails(id, card) {
-    console.log("Inside getPlaceDetails function");
+    // console.log("Inside getPlaceDetails function");
+    // request object to be passed through places getDetails method
     request = {
         placeId: id,
         fields: ["name", "place_id", "formatted_address", "photo", "url"]
     }
+    // create a new places object specific for places details
     const placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.getDetails(request, function(place, status) {
-        console.log("inside callback function for getPlaceDetails");
+        // console.log("inside callback function for getPlaceDetails");
         const googleStatus = google.maps.places.PlacesServiceStatus;
         if (status === googleStatus.OK) {
             console.log("The response contains a valid result.");
-            console.log(place);
-            // createMarker(place);
+            // modify the results.html results cards based on the places details data
             $(card).attr("value", place.place_id)
             let resultName = place.name;
             if(place.photos) {
@@ -158,7 +166,7 @@ function getPlaceDetails(id, card) {
         }
     });
 }
-
+// when the card button is clicked run the get directions function, passing through the destination variable from the card value attribute
 $(".btn-floating").on("click", function() {
     const destination = $(this).parent().parent()[0].attributes[2].value;
     getDirections(destination);
@@ -187,11 +195,13 @@ function addHotelList(){
         </td>`);
     }
 }
-
+// getDirections function maps out the path from the user's start location to one of the potential places for their trip
 function getDirections(destination) {
+    // create lace google place object using the desitination's place id
     const place = {
         placeId: destination
     }
+    // create a request object using the user's start location and target destination
     const request = {
         origin: googleLatLng,
         destination: place,
@@ -203,6 +213,7 @@ function getDirections(destination) {
     directionsRequest.route(request, function(result, status) {
         if(status === "OK"){
             console.log("Route found.");
+            // display directions results on map
             directionsResults.setDirections(result);
         }
         else if(status === "NOT_FOUND"){
