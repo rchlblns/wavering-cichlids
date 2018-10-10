@@ -63,6 +63,7 @@ function valdiateForm(address, entertainment) {
     addressValid = false;
   }
   else {
+    $("#addressValText").text("");
     addressValid = true;
   }
   if(entertainment === null) {
@@ -71,15 +72,14 @@ function valdiateForm(address, entertainment) {
     entertainmentValid = false;
   }
   else {
-    entertainmentValid = true;
     $("#entertainmentValText").text("");
+    entertainmentValid = true;
   }
   if(!addressValid || !entertainmentValid) {
     valid = false;
   }
   else if(addressValid && entertainmentValid) {
     valid = true;
-    $("#entertainmentValText").text("");
   }
   return valid;
 }
