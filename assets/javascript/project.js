@@ -1,26 +1,8 @@
-//function for paralax
-$(document).ready(function () {
-  $('.parallax').parallax();
-});
-//function for slide navbar
-$(document).ready(function () {
-  $('.sidenav').sidenav();
-});
 //drop down
 $('.dropdown-trigger').dropdown();
-$(document).ready(function () {
-  $('.sidenav').sidenav();
-});
 //drop down
 $('.dropdown-trigger').dropdown();
-//modal
-$(document).ready(function () {
-  $('.modal').modal();
-});
-//modal
-$(document).ready(function () {
-  $('select').formSelect();
-});
+
 
 //global variable declaration for user related data
 var addressInput;
@@ -28,18 +10,20 @@ var addLat;
 var addLng;
 var radiusMeters;
 var entertainment;
-
-// var user = {
-//   name: "",
-//   questionAnswers: []
-
-// }
+var input;
+var options;
 
 //main javascript code
 $(document).ready(function () {
-  
+
+  $('.parallax').parallax();
+  $('.sidenav').sidenav();
+  $('.sidenav').sidenav();
+  $('.modal').modal();
+  $('select').formSelect();
+
   // "finish" button click submit form and store variables to local storage
-  $("#finish-button").on("click", function () {
+  $("#finish-button").on("click", function(event) {
     event.preventDefault();
     // grab user input for address and stre in a variable
     addressInput = $("#question-address").val().trim().replace(/ /g, "+");
@@ -54,42 +38,48 @@ $(document).ready(function () {
     radiusMeters = radiusMiles * 1609.344;
     console.log("Miles converted to meters is " + radiusMeters);
 
-    sessionStorage.setItem("addressInput", addressInput);
-    sessionStorage.setItem("entertainment", entertainment);
-    sessionStorage.setItem("radiusMeters", radiusMeters);
+    const valid = valdiateForm(addressInput, entertainment);
+    if(valid) {
+      sessionStorage.setItem("addressInput", addressInput);
+      sessionStorage.setItem("entertainment", entertainment);
+      sessionStorage.setItem("radiusMeters", radiusMeters);
 
-    window.location.href = "results.html";
+      window.location.href = "results.html";
+    }
   });
   
 }); 
 
-
-/*function keywordPicker() {
-  console.log("Inside keywordPicker function.");
-  // grab values from questions 3 and 4
-  const q3 = $("#question3").val();
-  const q4 = $("#question4").val();
-  let keyword;
-  if (q3 === "warm") {
-    if (q4 === "outdoors") {
-      console.log("Need warm, outdoors activity for a Google keyword.");
-      keyword = "beach";
-    }
-    else if (q4 === "indoors") {
-      console.log("Need warm, indoors activity for a Google keyword.");
-      keyword = "shopping";
-    }
+function valdiateForm(address, entertainment) {
+  console.log("inside validate form.");
+  console.log(address);
+  console.log(entertainment);
+  let valid;
+  let addressValid;
+  let entertainmentValid;
+  if(address === "") {
+    console.log("address undefined.");
+    $("#addressValText").text("Don't forget to add a starting address.");
+    addressValid = false;
   }
-  else if (q3 === "cool") {
-    if (q4 === "outdoors") {
-      console.log("Need cold, outdoors activity for a Google keyword.");
-      keyword = "skiing";
-    }
-    else if (q4 === "indoors") {
-      console.log("Need cold, indoors activity for a Google keyword.");
-      keyword = "museum";
-    }
+  else {
+    addressValid = true;
   }
-  console.log("Keyword is " + keyword);
+  if(entertainment === null) {
+    console.log("entertainment undefined.");
+    $("#entertainmentValText").text("Pick somewhere you like to have fun.");
+    entertainmentValid = false;
+  }
+  else {
+    entertainmentValid = true;
+    $("#entertainmentValText").text("");
+  }
+  if(!addressValid || !entertainmentValid) {
+    valid = false;
+  }
+  else if(addressValid && entertainmentValid) {
+    valid = true;
+    $("#entertainmentValText").text("");
+  }
+  return valid;
 }
-});*/
