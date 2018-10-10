@@ -68,12 +68,8 @@ function initMap() {
         radius: radiusMeters,
         keyword: [entertainment],
         type: entertainment
-<<<<<<< HEAD
-    };
-=======
     }
     // create new Google places object for the nearbySearch
->>>>>>> master
     const placesInfo = new google.maps.places.PlacesService(map);
     placesInfo.nearbySearch(request, callback);
     // initialize google directionsService and request data
@@ -91,21 +87,11 @@ function callback(result, status) {
         console.log(result);
         // cycle through 3 of the google place results
         for (i = 0; i < 3; i++) {
-<<<<<<< HEAD
-        $(`#result${i}`).attr("value", result[i].place_id)
-        let resultName = result[i].name;
-        let imgURL = result[i].photos[0].getUrl();
-        $(`#result${i} img`).attr("src", imgURL);
-        $(`#result${i} .card-title`).text(resultName);
-        $(`#result${i} .card-title`).attr("class", "resultsTitle");
-        };
-=======
             // store the place id in id variable for use in getPlaceDetails funciton
             const id = result[i].place_id;
             console.log(id);
             getPlaceDetails(id, `#result${i}`);
         }
->>>>>>> master
     }
     else if (status === googleStatus.ERROR) {
         console.log("There was a problem contacting the Google servers.");
@@ -198,7 +184,7 @@ function addHotelList(){
         if(!hotel.awards[0] === undefined){
 
             rating = hotel.awards[0].provider +": "+hotel.awards[0].rating;
-        };
+        }
         //var tablerow = $("<tr>").append($("<td>")).text(hotel.property_name)
         //tablerow.append($("<td>")).text(addressline+" "+city+", "+state)
         //tablerow.append($("<td>")).text(rating);
@@ -207,25 +193,15 @@ function addHotelList(){
         <td>${addressline} ${city}, ${state}</td>
         <td>${rating}</td>
         </td>`);
-<<<<<<< HEAD
-    };
-};
-
-=======
     }
 }
 // getDirections function maps out the path from the user's start location to one of the potential places for their trip
->>>>>>> master
 function getDirections(destination) {
     // create lace google place object using the desitination's place id
     const place = {
         placeId: destination
-<<<<<<< HEAD
-    };
-=======
     }
     // create a request object using the user's start location and target destination
->>>>>>> master
     const request = {
         origin: googleLatLng,
         destination: place,
@@ -233,7 +209,7 @@ function getDirections(destination) {
         // waypoints: DirectionsWaypoint,
         // optimizeWaypoints: false,
         provideRouteAlternatives: false
-    };
+    }
     directionsRequest.route(request, function(result, status) {
         if(status === "OK"){
             console.log("Route found.");
@@ -263,6 +239,6 @@ function getDirections(destination) {
         }
         else if(status === "UNKNOWN_ERROR"){
             console.log("Directions request could not be processed due to a server error. The request may succeed if you try again.");
-        };
+        }
     });
-};
+}

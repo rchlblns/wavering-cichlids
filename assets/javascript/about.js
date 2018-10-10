@@ -1,12 +1,10 @@
 //function for slide navbar
 $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-
+  $('.sidenav').sidenav();
+});
 //drop down
-  $('.dropdown-trigger').dropdown();
-  
+$('.dropdown-trigger').dropdown();
 //collapsable
 $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
+  $('.collapsible').collapsible();
+});
