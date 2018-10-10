@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-// carousel function on results page :)
-  $(document).ready(function(){
-=======
 $(document).ready(function(){
->>>>>>> master
     $('.carousel').carousel();
 });
   
